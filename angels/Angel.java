@@ -2,8 +2,13 @@ package angels;
 
 import GameAdmin.GreatMagician;
 import constants.Constants;
+import main.InputLoader;
+import players.Knight;
+import players.Pyromancer;
+import players.Rogue;
+import players.Wizard;
 
-public abstract class Angel implements Subject {
+public abstract class Angel implements Subject, AngelVisitor {
     private int myAbscissa = Constants.DEFAULT_ABSCISSA;
     private int myOrdinate = Constants.DEFAULT_ORDINATE;
     private int angelType = Constants.DAMAGE_ANGEL;
@@ -56,5 +61,21 @@ public abstract class Angel implements Subject {
 
     @Override
     public void updateKilledPlayers() {
+    }
+
+    @Override
+    public void angelVisit(Knight knight, InputLoader inputLoader) {
+    }
+
+    @Override
+    public void angelVisit(Wizard wizard, InputLoader inputLoader) {
+    }
+
+    @Override
+    public void angelVisit(Rogue rogue, InputLoader inputLoader) {
+    }
+
+    @Override
+    public void angelVisit(Pyromancer pyromancer, InputLoader inputLoader) {
     }
 }

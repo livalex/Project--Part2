@@ -14,4 +14,7 @@ public interface Observer {
     void attachHitPlayers(final Human human);
 
     void attachKilledPlayers(final Human human);
+
+    void attachReanimatedPlayers(final Human human);
+
 }

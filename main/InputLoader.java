@@ -8,10 +8,12 @@ import players.Human;
 import java.util.ArrayList;
 
 public final class InputLoader {
+    private static InputLoader inputLoader = null;
+
     private final String inpPath, outPath;
     FileSystem fileSystem;
 
-    InputLoader(final String inpPath, final String outPath) {
+    private InputLoader(final String inpPath, final String outPath) {
         this.inpPath = inpPath;
         this.outPath = outPath;
         try {
@@ -19,6 +21,13 @@ public final class InputLoader {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public static InputLoader getInstance(final String arg1, final String arg2) {
+        if (inputLoader == null) {
+            inputLoader = new InputLoader(arg1, arg2);
+        }
+        return inputLoader;
     }
 
     // FileSystem fileSystem = new FileSystem(inpPath, outPath);
@@ -208,6 +217,108 @@ public final class InputLoader {
             fileSystem.writeInt(roundNumber);
             fileSystem.writeCharacter(' ');
             fileSystem.writeWord("~~");
+            fileSystem.writeNewLine();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void humanTypeDecider(final Human player) {
+        try {
+            if (player.getPlayerType() == Constants.PLAYER_TYPE_ZERO) {
+                fileSystem.writeWord("Pyromancer");
+            } else if (player.getPlayerType() == Constants.PLAYER_TYPE_ONE) {
+                fileSystem.writeWord("Knight");
+            } else if (player.getPlayerType() == Constants.PLAYER_TYPE_TWO) {
+                fileSystem.writeWord("Wizard");
+            } else if (player.getPlayerType() == Constants.PLAYER_TYPE_THREE) {
+                fileSystem.writeWord("Rogue");
+            }
+            fileSystem.writeCharacter(' ');
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void deathByAngel(final Human human) {
+        try {
+            fileSystem.writeWord("Player");
+            fileSystem.writeCharacter(' ');
+            humanTypeDecider(human);
+            fileSystem.writeInt(human.getPlayerNumber());
+            fileSystem.writeCharacter(' ');
+            fileSystem.writeWord("was");
+            fileSystem.writeCharacter(' ');
+            fileSystem.writeWord("killed");
+            fileSystem.writeCharacter(' ');
+            fileSystem.writeWord("by");
+            fileSystem.writeCharacter(' ');
+            fileSystem.writeWord("an");
+            fileSystem.writeCharacter(' ');
+            fileSystem.writeWord("angel");
+            fileSystem.writeNewLine();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void displayBadAngel(final Angel angel, final Human human) {
+        try {
+            angelTypeDecider(angel, fileSystem);
+            fileSystem.writeWord("hit");
+            fileSystem.writeCharacter(' ');
+            humanTypeDecider(human);
+            fileSystem.writeInt(human.getPlayerNumber());
+            fileSystem.writeNewLine();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void displayGoodAngel(final Angel angel, final Human human) {
+        try {
+            angelTypeDecider(angel, fileSystem);
+            fileSystem.writeWord("helped");
+            fileSystem.writeCharacter(' ');
+            humanTypeDecider(human);
+            fileSystem.writeInt(human.getPlayerNumber());
+            fileSystem.writeNewLine();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void displayLvlEvolution(final Human human) {
+        try {
+            humanTypeDecider(human);
+            fileSystem.writeInt(human.getPlayerNumber());
+            fileSystem.writeCharacter(' ');
+            fileSystem.writeWord("reached");
+            fileSystem.writeCharacter(' ');
+            fileSystem.writeWord("level");
+            fileSystem.writeCharacter(' ');
+            fileSystem.writeInt(human.getLevel());
+            fileSystem.writeNewLine();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void declareDeath(final Human human2, final Human human1) {
+        try {
+            fileSystem.writeWord("Player");
+            fileSystem.writeCharacter(' ');
+            humanTypeDecider(human1);
+            fileSystem.writeInt(human1.getPlayerNumber());
+            fileSystem.writeCharacter(' ');
+            fileSystem.writeWord("was");
+            fileSystem.writeCharacter(' ');
+            fileSystem.writeWord("killed");
+            fileSystem.writeCharacter(' ');
+            fileSystem.writeWord("by");
+            fileSystem.writeCharacter(' ');
+            humanTypeDecider(human2);
+            fileSystem.writeInt(human2.getPlayerNumber());
             fileSystem.writeNewLine();
         } catch (Exception e) {
             e.printStackTrace();

@@ -13,7 +13,7 @@ public final class Main {
 
     public static void main(final String[] args) {
         // Objects used read and write data.
-        InputLoader inputLoader = new InputLoader(args[0], args[1]);
+        InputLoader inputLoader = InputLoader.getInstance(args[0], args[1]);
         Input input = inputLoader.load();
 
         // Instantiations.

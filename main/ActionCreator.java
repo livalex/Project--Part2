@@ -45,7 +45,7 @@ public final class ActionCreator {
         }
     }
 
-    public void xpGiver(final Human player2, final Human player1) {
+    public void xpGiver(final Human player2, final Human player1, InputLoader inputLoader) {
         // Update xp.
         player2.setXp(player2.getXp() + Math.max(0,
                 Constants.XP_FORMULA_FACTOR - (player2.getLevel()
@@ -68,9 +68,11 @@ public final class ActionCreator {
             player2.setMaxHp(player2.getMaxHp() + lifeIncrease);
             player2.setHp(player2.getMaxHp());
         }
+        inputLoader.declareDeath(player2, player1);
     }
 
-    public ArrayList<Human> battle(final int n, final int m, ArrayList<Human> players) {
+    public ArrayList<Human> battle(final int n, final int m, ArrayList<Human> players,
+                                   final InputLoader inputLoader, ArrayList<Angel> angels) {
         for (int k = 0; k < m - 1; ++k) {
             Human player1 = players.get(k);
             for (int l = k + 1; l < m; ++l) {
@@ -82,26 +84,37 @@ public final class ActionCreator {
                     if (!player1.isDead() && !player2.isDead()) {
                         // Make sure that wizard strikes second.
                         if (player1.getPlayerType() != 2 && player2.getPlayerType() == 2) {
-                            player1.accept(player2);
-                            player2.accept(player1);
-
-                            if (player1.isDead()) {
-                                xpGiver(player2, player1);
-                            }
+                            player1.accept(player2, inputLoader);
+                            player2.accept(player1, inputLoader);
 
                             if (player2.isDead()) {
-                                xpGiver(player1, player2);
+                                xpGiver(player1, player2, inputLoader);
                             }
 
+                            if (player1.isDead()) {
+                                xpGiver(player2, player1, inputLoader);
+                            }
                         } else {
-                            player2.accept(player1);
-                            player1.accept(player2);
-                            if (player1.isDead()) {
-                                xpGiver(player2, player1);
-                            }
+                            player2.accept(player1, inputLoader);
+                            player1.accept(player2, inputLoader);
 
                             if (player2.isDead()) {
-                                xpGiver(player1, player2);
+                                xpGiver(player1, player2, inputLoader);
+                            }
+
+                            if (player1.isDead()) {
+                                xpGiver(player2, player1, inputLoader);
+                            }
+                        }
+
+                        for (int r = 0; r < angels.size(); ++r) {
+                            Angel angel = angels.get(r);
+                            for (int v = 0; v < players.size(); ++v) {
+                                Human human = players.get(v);
+                                if (angel.getMyAbscissa() == human.getCurrentAbscissa()
+                                        && angel.getMyOrdinate() == human.getCurrentOrdinate()) {
+                                    human.acceptAngel(angel, inputLoader);
+                                }
                             }
                         }
                     }
@@ -173,7 +186,7 @@ public final class ActionCreator {
             }
             ArrayList<Angel> angels = angelsVectorCreator(input, i, vectorIterator, inputLoader);
 
-            players = battle(n, m, players);
+            players = battle(n, m, players, inputLoader, angels);
 
             inputLoader.createSpace();
         }

@@ -14,6 +14,7 @@ public final class GreatMagician implements Observer {
     private ArrayList<Human> helpedPlayers = new ArrayList<>();
     private ArrayList<Human> hitPlayers = new ArrayList<>();
     private ArrayList<Human> killedPlayers = new ArrayList<>();
+    private ArrayList<Human> reanimatedPlayers = new ArrayList<>();
 
     private GreatMagician() {
     }
@@ -48,6 +49,11 @@ public final class GreatMagician implements Observer {
     @Override
     public void attachKilledPlayers(final Human human) {
         killedPlayers.add(human);
+    }
+
+    @Override
+    public void attachReanimatedPlayers(final Human human) {
+        reanimatedPlayers.add(human);
     }
 
 }

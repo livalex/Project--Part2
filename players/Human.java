@@ -1,8 +1,16 @@
 package players;
 
+import angels.AngelVisitor;
+import angels.VisitedByAngel;
 import constants.Constants;
+import main.Input;
+import main.InputLoader;
+import strategies.KnightGameStrategy;
+import strategies.PyroGameStrategy;
+import strategies.RogueGameStrategy;
+import strategies.WizardGameStrategy;
 
-public abstract class Human implements Visitor, Visitable {
+public abstract class Human implements Visitor, Visitable, VisitedByAngel {
     private int hp = Constants.STARTING_HP;
     private int xp = Constants.STARTING_XP;
     private int currentGround = Constants.STARTING_GROUND;
@@ -30,6 +38,15 @@ public abstract class Human implements Visitor, Visitable {
     private int paralysisDmgTakeRound = Constants.DEFAULT_STARTING_VALUE;
     private int noRaceDamage = Constants.DEFAULT_STARTING_VALUE;
     private int playerNumber = Constants.DEFAULT_PLAYER_NUMBER;
+    private static int totalNrPlayers = Constants.DEFAULT_PLAYER_NUMBER;
+
+    public static int getTotalNrPlayers() {
+        return totalNrPlayers;
+    }
+
+    public static void setTotalNrPlayers(int totalNrPlayers) {
+        Human.totalNrPlayers = totalNrPlayers;
+    }
 
     public int getPlayerNumber() {
         return playerNumber;
@@ -247,15 +264,41 @@ public abstract class Human implements Visitor, Visitable {
         this.currentOrdinate = currentOrdinate;
     }
 
-    public abstract void accept(Visitor visitor);
+    public abstract void acceptAngel(AngelVisitor angelVisitor, InputLoader inputLoader);
 
-    public abstract void fight(Pyromancer pyromancer);
+    public abstract void accept(Visitor visitor, InputLoader inputLoader);
 
-    public abstract void fight(Rogue rogue);
+    public abstract void fight(Pyromancer pyromancer, InputLoader inputLoader);
 
-    public abstract void fight(Knight knight);
+    public abstract void fight(Rogue rogue, InputLoader inputLoader);
 
-    public abstract void fight(Wizard wizard);
+    public abstract void fight(Knight knight, InputLoader inputLoader);
+
+    public abstract void fight(Wizard wizard, InputLoader inputLoader);
+
+    public void playRogueStrategy(final RogueGameStrategy gameStrategy, final Rogue rogue,
+                                  final float mod1, final float mod2, final float grdBonus,
+                                  final Human victim, InputLoader inputLoader) {
+        gameStrategy.play(rogue, mod1, mod2, grdBonus, victim, inputLoader);
+    }
+
+    public void playKnightStrategy(final KnightGameStrategy gameStrategy, final Knight knight,
+                                   final float mod1, final float mod2, final float grdBonus,
+                                   final Human victim, InputLoader inputLoader) {
+        gameStrategy.play(knight, mod1, mod2, grdBonus, victim, inputLoader);
+    }
+
+    public void playPyroStrategy(final PyroGameStrategy gameStrategy, final Pyromancer pyro,
+                                 final float mod1, final float mod2, final float grdBonus,
+                                 final Human victim, InputLoader inputLoader) {
+        gameStrategy.play(pyro, mod1, mod2, grdBonus, victim, inputLoader);
+    }
+
+    public void playWizardStrategy(final WizardGameStrategy gameStrategy, final Wizard wizard,
+                                   final float mod1, final float mod2, final float grdBonus,
+                                   final Human victim, InputLoader inputLoader) {
+        gameStrategy.play(wizard, mod1, mod2, grdBonus, victim, inputLoader);
+    }
 
     // Check the player's overtime ability and
     // If any of them affects a player, update
@@ -334,7 +377,8 @@ public abstract class Human implements Visitor, Visitable {
      * @param groundBonus
      */
     public void wizardGame(final Wizard wizard, final float modifier1,
-                           final float modifier2, final float groundBonus) {
+                           final float modifier2, final float groundBonus,
+                           InputLoader inputLoader) {
         float percentage;
         int drainDamage;
         int finalDamage;
@@ -407,7 +451,8 @@ public abstract class Human implements Visitor, Visitable {
      * @param groundBonus
      */
     public void pyroGame(final Pyromancer pyromancer, final float modifier1,
-                         final float modifier2, final float groundBonus) {
+                         final float modifier2, final float groundBonus,
+                         InputLoader inputLoader) {
 
         // Level factor.
         pyromancer.setFireBlast(Constants.FIREBLAST_DAMAGE
@@ -466,7 +511,8 @@ public abstract class Human implements Visitor, Visitable {
      * @param groundBonus
      */
     public void knightGame(final Knight knight, final float modifier1,
-                           final float modifier2, final float groundBonus) {
+                           final float modifier2, final float groundBonus,
+                           InputLoader inputLoader) {
         float percentage = Constants.HP_LIMIT_FPARAM
                 + knight.getLevel() * Constants.HP_LIMIT_SPARAM;
         if (percentage > Constants.MAX_KNIGHT_HP_LIMIT) {
@@ -528,7 +574,8 @@ public abstract class Human implements Visitor, Visitable {
      * @param groundBonus
      */
     public void rogueGame(final Rogue rogue, final float modifier1,
-                          final float modifier2, final float groundBonus) {
+                          final float modifier2, final float groundBonus,
+                          InputLoader inputLoader) {
         // Level factor.
         rogue.setBackStab(Constants.BACKSTAB_DEFAULT_DAMAGE
                 + rogue.getLevel() * Constants.BACKSTAB_LVL_INC);
