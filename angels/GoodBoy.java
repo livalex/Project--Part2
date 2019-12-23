@@ -23,20 +23,26 @@ public class GoodBoy extends Angel implements Subject, AngelVisitor {
         if (!knight.isDead()) {
             GreatMagician greatMagician = GreatMagician.getInstance();
 
-            inputLoader.displayBadAngel(this, knight);
+            inputLoader.displayGoodAngel(this, knight);
 
             knight.setHp(knight.getHp() + 20);
 
-            knight.setKnightBsMod(knight.getKnightBsMod() + 0.4f);
-            knight.setKnightParMod(knight.getKnightParMod() + 0.4f);
-            knight.setKnightDrainMod(knight.getKnightDrainMod() + 0.4f);
-            knight.setKnightDeflectMod(knight.getKnightDeflectMod() + 0.4f);
+            // !!!
+            if (knight.getHp() > knight.getMaxHp()) {
+                knight.setHp(knight.getMaxHp());
+            }
+            // !!!
+
+            knight.setWizardExecuteMod(knight.getWizardExecuteMod() + 0.4f);
+            knight.setWizardSlamMod(knight.getWizardSlamMod() + 0.4f);
+            knight.setRogueExecuteMod(knight.getRogueExecuteMod() + 0.4f);
+            knight.setRogueSlamMod(knight.getRogueSlamMod() + 0.4f);
             if (knight.getKnightExecuteMod() != 0.0f) {
                 knight.setKnightExecuteMod(knight.getKnightExecuteMod() + 0.4f);
             }
             knight.setKnightSlamMod(knight.getKnightSlamMod() + 0.4f);
-            knight.setKnightFbMod(knight.getKnightFbMod() + 0.4f);
-            knight.setKnightIgniteMod(knight.getKnightIgniteMod() + 0.4f);
+            knight.setPyroExecuteMod(knight.getPyroExecuteMod() + 0.4f);
+            knight.setPyroSlamMod(knight.getPyroSlamMod() + 0.4f);
 
             greatMagician.attachHelpedPlayers(knight);
         }
@@ -47,22 +53,27 @@ public class GoodBoy extends Angel implements Subject, AngelVisitor {
         if (!wizard.isDead()) {
             GreatMagician greatMagician = GreatMagician.getInstance();
 
-            inputLoader.displayBadAngel(this, wizard);
+            inputLoader.displayGoodAngel(this, wizard);
 
             wizard.setHp(wizard.getHp() + 50);
 
-            wizard.setWizardBsMod(wizard.getWizardBsMod() + 0.3f);
-            wizard.setWizardParMod(wizard.getWizardParMod() + 0.3f);
+            // !!!
+            if (wizard.getHp() > wizard.getMaxHp()) {
+                wizard.setHp(wizard.getMaxHp());
+            }
+            // !!!
+
+            wizard.setRogueDrainMod(wizard.getRogueDrainMod() + 0.3f);
+            wizard.setRogueDeflectMod(wizard.getRogueDeflectMod() + 0.3f);
             wizard.setWizardDrainMod(wizard.getWizardDrainMod() + 0.3f);
             wizard.setWizardDeflectMod(wizard.getWizardDeflectMod() + 0.3f);
-            wizard.setWizardExecuteMod(wizard.getWizardExecuteMod() + 0.3f);
-            wizard.setWizardSlamMod(wizard.getWizardSlamMod() + 0.3f);
-            wizard.setWizardFbMod(wizard.getWizardFbMod() + 0.3f);
-            wizard.setWizardIgniteMod(wizard.getWizardIgniteMod() + 0.3f);
+            wizard.setPyroDrainMod(wizard.getPyroDrainMod() + 0.3f);
+            wizard.setPyroDeflectMod(wizard.getPyroDeflectMod() + 0.3f);
+            wizard.setKnightDrainMod(wizard.getKnightDrainMod() + 0.3f);
+            wizard.setKnightDeflectMod(wizard.getKnightDeflectMod()+ 0.3f);
 
             greatMagician.attachHelpedPlayers(wizard);
         }
-
     }
 
     @Override
@@ -70,18 +81,24 @@ public class GoodBoy extends Angel implements Subject, AngelVisitor {
         if (!rogue.isDead()) {
             GreatMagician greatMagician = GreatMagician.getInstance();
 
-            inputLoader.displayBadAngel(this, rogue);
+            inputLoader.displayGoodAngel(this, rogue);
 
             rogue.setHp(rogue.getHp() + 40);
 
+            // !!!
+            if (rogue.getHp() > rogue.getMaxHp()) {
+                rogue.setHp(rogue.getMaxHp());
+            }
+            // !!!
+
             rogue.setRogueBsMod(rogue.getRogueBsMod() + 0.4f);
             rogue.setRogueParMod(rogue.getRogueParMod() + 0.4f);
-            rogue.setRogueDrainMod(rogue.getRogueDrainMod() + 0.4f);
-            rogue.setRogueDeflectMod(rogue.getRogueDeflectMod() + 0.4f);
-            rogue.setRogueExecuteMod(rogue.getRogueExecuteMod() + 0.4f);
-            rogue.setRogueSlamMod(rogue.getRogueSlamMod() + 0.4f);
-            rogue.setRogueFbMod(rogue.getRogueFbMod() + 0.4f);
-            rogue.setRogueIgniteMod(rogue.getRogueIgniteMod() + 0.4f);
+            rogue.setWizardBsMod(rogue.getWizardBsMod() + 0.4f);
+            rogue.setWizardParMod(rogue.getWizardParMod() + 0.4f);
+            rogue.setKnightBsMod(rogue.getKnightBsMod() + 0.4f);
+            rogue.setKnightParMod(rogue.getKnightParMod() + 0.4f);
+            rogue.setPyroBsMod(rogue.getPyroBsMod() + 0.4f);
+            rogue.setPyroParMod(rogue.getPyroParMod()+ 0.4f);
 
             greatMagician.attachHelpedPlayers(rogue);
         }
@@ -92,18 +109,24 @@ public class GoodBoy extends Angel implements Subject, AngelVisitor {
         if (!pyro.isDead()) {
             GreatMagician greatMagician = GreatMagician.getInstance();
 
-            inputLoader.displayBadAngel(this, pyro);
+            inputLoader.displayGoodAngel(this, pyro);
 
             pyro.setHp(pyro.getHp() + 30);
 
-            pyro.setPyroBsMod(pyro.getPyroBsMod() + 0.5f);
-            pyro.setPyroParMod(pyro.getPyroParMod() + 0.5f);
-            pyro.setPyroDrainMod(pyro.getPyroDrainMod() + 0.5f);
-            pyro.setPyroDeflectMod(pyro.getPyroDeflectMod() + 0.5f);
-            pyro.setPyroExecuteMod(pyro.getPyroExecuteMod() + 0.5f);
-            pyro.setPyroSlamMod(pyro.getPyroSlamMod() + 0.5f);
+            // !!!
+            if (pyro.getHp() > pyro.getMaxHp()) {
+                pyro.setHp(pyro.getMaxHp());
+            }
+            // !!!
+
+            pyro.setWizardFbMod(pyro.getPyroFbMod() + 0.5f);
+            pyro.setWizardIgniteMod(pyro.getPyroIgniteMod() + 0.5f);
+            pyro.setKnightFbMod(pyro.getPyroFbMod() + 0.5f);
+            pyro.setKnightIgniteMod(pyro.getPyroIgniteMod() + 0.5f);
+            pyro.setRogueFbMod(pyro.getRogueFbMod() + 0.5f);
+            pyro.setRogueIgniteMod(pyro.getRogueIgniteMod() + 0.5f);
             pyro.setPyroFbMod(pyro.getPyroFbMod() + 0.5f);
-            pyro.setPyroIgniteMod(pyro.getPyroIgniteMod() + 0.5f);
+            pyro.setPyroIgniteMod(pyro.getPyroIgniteMod()+ 0.5f);
 
             greatMagician.attachHelpedPlayers(pyro);
         }

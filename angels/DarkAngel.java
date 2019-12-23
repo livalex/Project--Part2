@@ -73,7 +73,6 @@ public class DarkAngel extends Angel implements Subject, AngelVisitor {
 
             greatMagician.attachHitPlayers(rogue);
         }
-
     }
 
     @Override
@@ -93,6 +92,5 @@ public class DarkAngel extends Angel implements Subject, AngelVisitor {
 
             greatMagician.attachHitPlayers(pyro);
         }
-
     }
 }

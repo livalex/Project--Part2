@@ -21,6 +21,11 @@ public class Dracula extends Angel implements Subject, AngelVisitor {
     @Override
     public void angelVisit(Knight knight, InputLoader inputLoader) {
         if (!knight.isDead()) {
+            // !!!
+            System.out.println("Mod 1 before dracula " + knight.getKnightExecuteMod() + " for player " + knight.getPlayerNumber());
+            System.out.println("Mod 2 before dracula " + knight.getKnightSlamMod() + " for player " + knight.getPlayerNumber());
+            /// !!!
+
             GreatMagician greatMagician = GreatMagician.getInstance();
 
             inputLoader.displayBadAngel(this, knight);
@@ -33,18 +38,23 @@ public class Dracula extends Angel implements Subject, AngelVisitor {
                 greatMagician.attachKilledPlayers(knight);
             }
 
-            knight.setKnightBsMod(knight.getKnightBsMod() - 0.2f);
-            knight.setKnightParMod(knight.getKnightParMod() - 0.2f);
-            knight.setKnightDrainMod(knight.getKnightDrainMod() - 0.2f);
-            knight.setKnightDeflectMod(knight.getKnightDeflectMod() - 0.2f);
+            knight.setWizardExecuteMod(knight.getWizardExecuteMod() - 0.2f);
+            knight.setWizardSlamMod(knight.getWizardSlamMod() - 0.2f);
+            knight.setRogueExecuteMod(knight.getRogueExecuteMod() - 0.2f);
+            knight.setRogueSlamMod(knight.getRogueSlamMod() - 0.2f);
             if (knight.getKnightExecuteMod() != 0.0f) {
                 knight.setKnightExecuteMod(knight.getKnightExecuteMod() - 0.2f);
             }
             knight.setKnightSlamMod(knight.getKnightSlamMod() - 0.2f);
-            knight.setKnightFbMod(knight.getKnightFbMod() - 0.2f);
-            knight.setKnightIgniteMod(knight.getKnightIgniteMod() - 0.2f);
+            knight.setPyroExecuteMod(knight.getPyroExecuteMod() - 0.2f);
+            knight.setPyroSlamMod(knight.getPyroSlamMod() - 0.2f);
 
             greatMagician.attachHitPlayers(knight);
+
+            // !!!
+            System.out.println("Mod 1 after dracula " + knight.getKnightExecuteMod() + " for player " + knight.getPlayerNumber());
+            System.out.println("Mod 2 after dracula " + knight.getKnightSlamMod() + " for player " + knight.getPlayerNumber());
+            /// !!!
         }
     }
 
@@ -63,14 +73,14 @@ public class Dracula extends Angel implements Subject, AngelVisitor {
                 greatMagician.attachKilledPlayers(wizard);
             }
 
-            wizard.setWizardBsMod(wizard.getWizardBsMod() - 0.4f);
-            wizard.setWizardParMod(wizard.getWizardParMod() - 0.4f);
+            wizard.setRogueDrainMod(wizard.getRogueDrainMod() - 0.4f);
+            wizard.setRogueDeflectMod(wizard.getRogueDeflectMod() - 0.4f);
             wizard.setWizardDrainMod(wizard.getWizardDrainMod() - 0.4f);
             wizard.setWizardDeflectMod(wizard.getWizardDeflectMod() - 0.4f);
-            wizard.setWizardExecuteMod(wizard.getWizardExecuteMod() - 0.4f);
-            wizard.setWizardSlamMod(wizard.getWizardSlamMod() - 0.4f);
-            wizard.setWizardFbMod(wizard.getWizardFbMod() - 0.4f);
-            wizard.setWizardIgniteMod(wizard.getWizardIgniteMod() - 0.4f);
+            wizard.setPyroDrainMod(wizard.getPyroDrainMod() - 0.4f);
+            wizard.setPyroDeflectMod(wizard.getPyroDeflectMod() - 0.4f);
+            wizard.setKnightDrainMod(wizard.getKnightDrainMod() - 0.4f);
+            wizard.setKnightDeflectMod(wizard.getKnightDeflectMod()- 0.4f);
 
             greatMagician.attachHitPlayers(wizard);
         }
@@ -93,12 +103,12 @@ public class Dracula extends Angel implements Subject, AngelVisitor {
 
             rogue.setRogueBsMod(rogue.getRogueBsMod() - 0.1f);
             rogue.setRogueParMod(rogue.getRogueParMod() - 0.1f);
-            rogue.setRogueDrainMod(rogue.getRogueDrainMod() - 0.1f);
-            rogue.setRogueDeflectMod(rogue.getRogueDeflectMod() - 0.1f);
-            rogue.setRogueExecuteMod(rogue.getRogueExecuteMod() - 0.1f);
-            rogue.setRogueSlamMod(rogue.getRogueSlamMod() - 0.1f);
-            rogue.setRogueFbMod(rogue.getRogueFbMod() - 0.1f);
-            rogue.setRogueIgniteMod(rogue.getRogueIgniteMod() - 0.1f);
+            rogue.setWizardBsMod(rogue.getWizardBsMod() - 0.1f);
+            rogue.setWizardParMod(rogue.getWizardParMod() - 0.1f);
+            rogue.setKnightBsMod(rogue.getKnightBsMod() - 0.1f);
+            rogue.setKnightParMod(rogue.getKnightParMod() - 0.1f);
+            rogue.setPyroBsMod(rogue.getPyroBsMod() - 0.1f);
+            rogue.setPyroParMod(rogue.getPyroParMod()- 0.1f);
 
             greatMagician.attachHitPlayers(rogue);
         }
@@ -119,12 +129,12 @@ public class Dracula extends Angel implements Subject, AngelVisitor {
                 greatMagician.attachKilledPlayers(pyro);
             }
 
-            pyro.setPyroBsMod(pyro.getPyroBsMod() - 0.1f);
-            pyro.setPyroParMod(pyro.getPyroParMod() - 0.1f);
-            pyro.setPyroDrainMod(pyro.getPyroDrainMod() - 0.1f);
-            pyro.setPyroDeflectMod(pyro.getPyroDeflectMod() - 0.1f);
-            pyro.setPyroExecuteMod(pyro.getPyroExecuteMod() - 0.1f);
-            pyro.setPyroSlamMod(pyro.getPyroSlamMod() - 0.1f);
+            pyro.setWizardFbMod(pyro.getPyroFbMod() - 0.1f);
+            pyro.setWizardIgniteMod(pyro.getPyroIgniteMod() - 0.1f);
+            pyro.setKnightFbMod(pyro.getPyroFbMod() - 0.1f);
+            pyro.setKnightIgniteMod(pyro.getPyroIgniteMod() - 0.1f);
+            pyro.setRogueFbMod(pyro.getRogueFbMod() - 0.1f);
+            pyro.setRogueIgniteMod(pyro.getRogueIgniteMod() - 0.1f);
             pyro.setPyroFbMod(pyro.getPyroFbMod() - 0.1f);
             pyro.setPyroIgniteMod(pyro.getPyroIgniteMod() - 0.1f);
 

@@ -27,19 +27,23 @@ public class LevelUpAngel extends Angel implements Subject, AngelVisitor {
             ++level;
             knight.setLevel(level);
 
+            int maxHp = knight.getMaxHp();
+            knight.setHp(maxHp + 80);
+            knight.setMaxHp(maxHp + 80);
+
             inputLoader.displayGoodAngel(this, knight);
             inputLoader.displayLvlEvolution(knight);
 
-            knight.setKnightBsMod(knight.getKnightBsMod() + 0.1f);
-            knight.setKnightParMod(knight.getKnightParMod() + 0.1f);
-            knight.setKnightDrainMod(knight.getKnightDrainMod() + 0.1f);
-            knight.setKnightDeflectMod(knight.getKnightDeflectMod() + 0.1f);
+            knight.setWizardExecuteMod(knight.getWizardExecuteMod() + 0.1f);
+            knight.setWizardSlamMod(knight.getWizardSlamMod() + 0.1f);
+            knight.setRogueExecuteMod(knight.getRogueExecuteMod() + 0.1f);
+            knight.setRogueSlamMod(knight.getRogueSlamMod() + 0.1f);
             if (knight.getKnightExecuteMod() != 0.0f) {
                 knight.setKnightExecuteMod(knight.getKnightExecuteMod() + 0.1f);
             }
             knight.setKnightSlamMod(knight.getKnightSlamMod() + 0.1f);
-            knight.setKnightFbMod(knight.getKnightFbMod() + 0.1f);
-            knight.setKnightIgniteMod(knight.getKnightIgniteMod() + 0.1f);
+            knight.setPyroExecuteMod(knight.getPyroExecuteMod() + 0.1f);
+            knight.setPyroSlamMod(knight.getPyroSlamMod() + 0.1f);
 
             greatMagician.attachHelpedPlayers(knight);
         }
@@ -55,17 +59,21 @@ public class LevelUpAngel extends Angel implements Subject, AngelVisitor {
             ++level;
             wizard.setLevel(level);
 
+            int maxHp = wizard.getMaxHp();
+            wizard.setHp(maxHp + 30);
+            wizard.setMaxHp(maxHp + 30);
+
             inputLoader.displayGoodAngel(this, wizard);
             inputLoader.displayLvlEvolution(wizard);
 
-            wizard.setWizardBsMod(wizard.getWizardBsMod() + 0.25f);
-            wizard.setWizardParMod(wizard.getWizardParMod() + 0.25f);
+            wizard.setRogueDrainMod(wizard.getRogueDrainMod() + 0.25f);
+            wizard.setRogueDeflectMod(wizard.getRogueDeflectMod() + 0.25f);
             wizard.setWizardDrainMod(wizard.getWizardDrainMod() + 0.25f);
             wizard.setWizardDeflectMod(wizard.getWizardDeflectMod() + 0.25f);
-            wizard.setWizardExecuteMod(wizard.getWizardExecuteMod() + 0.25f);
-            wizard.setWizardSlamMod(wizard.getWizardSlamMod() + 0.25f);
-            wizard.setWizardFbMod(wizard.getWizardFbMod() + 0.25f);
-            wizard.setWizardIgniteMod(wizard.getWizardIgniteMod() + 0.25f);
+            wizard.setPyroDrainMod(wizard.getPyroDrainMod() + 0.25f);
+            wizard.setPyroDeflectMod(wizard.getPyroDeflectMod() + 0.25f);
+            wizard.setKnightDrainMod(wizard.getKnightDrainMod() + 0.25f);
+            wizard.setKnightDeflectMod(wizard.getKnightDeflectMod()+ 0.25f);
 
             greatMagician.attachHelpedPlayers(wizard);
         }
@@ -81,17 +89,24 @@ public class LevelUpAngel extends Angel implements Subject, AngelVisitor {
             ++level;
             rogue.setLevel(level);
 
+            int maxHp = rogue.getMaxHp();
+            System.out.println("MaxHp " + maxHp);
+            rogue.setHp(maxHp + 40);
+            System.out.println(rogue.getHp());
+            rogue.setMaxHp(maxHp + 40);
+            System.out.println(rogue.getMaxHp());
+
             inputLoader.displayGoodAngel(this, rogue);
             inputLoader.displayLvlEvolution(rogue);
 
             rogue.setRogueBsMod(rogue.getRogueBsMod() + 0.15f);
             rogue.setRogueParMod(rogue.getRogueParMod() + 0.15f);
-            rogue.setRogueDrainMod(rogue.getRogueDrainMod() + 0.15f);
-            rogue.setRogueDeflectMod(rogue.getRogueDeflectMod() + 0.15f);
-            rogue.setRogueExecuteMod(rogue.getRogueExecuteMod() + 0.15f);
-            rogue.setRogueSlamMod(rogue.getRogueSlamMod() + 0.15f);
-            rogue.setRogueFbMod(rogue.getRogueFbMod() + 0.15f);
-            rogue.setRogueIgniteMod(rogue.getRogueIgniteMod() + 0.15f);
+            rogue.setWizardBsMod(rogue.getWizardBsMod() + 0.15f);
+            rogue.setWizardParMod(rogue.getWizardParMod() + 0.15f);
+            rogue.setKnightBsMod(rogue.getKnightBsMod() + 0.15f);
+            rogue.setKnightParMod(rogue.getKnightParMod() + 0.15f);
+            rogue.setPyroBsMod(rogue.getPyroBsMod() + 0.15f);
+            rogue.setPyroParMod(rogue.getPyroParMod()+ 0.15f);
 
             greatMagician.attachHelpedPlayers(rogue);
         }
@@ -107,17 +122,21 @@ public class LevelUpAngel extends Angel implements Subject, AngelVisitor {
             ++level;
             pyro.setLevel(level);
 
+            int maxHp = pyro.getMaxHp();
+            pyro.setHp(maxHp + 50);
+            pyro.setMaxHp(maxHp + 50);
+
             inputLoader.displayGoodAngel(this, pyro);
             inputLoader.displayLvlEvolution(pyro);
 
-            pyro.setPyroBsMod(pyro.getPyroBsMod() + 0.2f);
-            pyro.setPyroParMod(pyro.getPyroParMod() + 0.2f);
-            pyro.setPyroDrainMod(pyro.getPyroDrainMod() + 0.2f);
-            pyro.setPyroDeflectMod(pyro.getPyroDeflectMod() + 0.2f);
-            pyro.setPyroExecuteMod(pyro.getPyroExecuteMod() + 0.2f);
-            pyro.setPyroSlamMod(pyro.getPyroSlamMod() + 0.2f);
+            pyro.setWizardFbMod(pyro.getPyroFbMod() + 0.2f);
+            pyro.setWizardIgniteMod(pyro.getPyroIgniteMod() + 0.2f);
+            pyro.setKnightFbMod(pyro.getPyroFbMod() + 0.2f);
+            pyro.setKnightIgniteMod(pyro.getPyroIgniteMod() + 0.2f);
+            pyro.setRogueFbMod(pyro.getRogueFbMod() + 0.2f);
+            pyro.setRogueIgniteMod(pyro.getRogueIgniteMod() + 0.2f);
             pyro.setPyroFbMod(pyro.getPyroFbMod() + 0.2f);
-            pyro.setPyroIgniteMod(pyro.getPyroIgniteMod() + 0.2f);
+            pyro.setPyroIgniteMod(pyro.getPyroIgniteMod()+ 0.2f);
 
             greatMagician.attachHelpedPlayers(pyro);
         }

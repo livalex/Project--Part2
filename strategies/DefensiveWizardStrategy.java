@@ -5,21 +5,19 @@ import main.InputLoader;
 import players.Human;
 import players.Wizard;
 
-public class DefensiveWizardStrategy implements WizardGameStrategy {
+public class DefensiveWizardStrategy implements GameStrategy {
     @Override
-    public void play(final Wizard wizard, final float modifier1,
-                     final float modifier2, final float grdBonus,
-                     final Human victim, InputLoader inputLoader) {
+    public void play(final Human human, InputLoader inputLoader) {
         // De sters param victim
-        wizard.setHp(wizard.getHp() + (wizard.getHp() / 5));
+        human.setHp(human.getHp() + (human.getHp() / 5));
 
-        wizard.setWizardBsMod(wizard.getWizardBsMod() - 0.2f);
-        wizard.setWizardParMod(wizard.getWizardParMod() - 0.2f);
-        wizard.setWizardDrainMod(wizard.getWizardDrainMod() - 0.2f);
-        wizard.setWizardDeflectMod(wizard.getWizardDeflectMod() - 0.2f);
-        wizard.setWizardExecuteMod(wizard.getWizardExecuteMod() - 0.2f);
-        wizard.setWizardSlamMod(wizard.getWizardSlamMod() - 0.2f);
-        wizard.setWizardFbMod(wizard.getWizardFbMod() - 0.2f);
-        wizard.setWizardIgniteMod(wizard.getWizardIgniteMod()- 0.2f);
+        human.setRogueDrainMod(human.getRogueDrainMod() - 0.2f);
+        human.setRogueDeflectMod(human.getRogueDeflectMod() - 0.2f);
+        human.setWizardDrainMod(human.getWizardDrainMod() - 0.2f);
+        human.setWizardDeflectMod(human.getWizardDeflectMod() - 0.2f);
+        human.setPyroDrainMod(human.getPyroDrainMod() - 0.2f);
+        human.setPyroDeflectMod(human.getPyroDeflectMod() - 0.2f);
+        human.setKnightDrainMod(human.getKnightDrainMod() - 0.2f);
+        human.setKnightDeflectMod(human.getKnightDeflectMod()- 0.2f);
     }
 }

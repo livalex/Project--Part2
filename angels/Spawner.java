@@ -1,5 +1,6 @@
 package angels;
 
+import GameAdmin.GreatMagician;
 import constants.Constants;
 import main.InputLoader;
 import players.Knight;
@@ -18,21 +19,65 @@ public class Spawner extends Angel implements Subject, AngelVisitor {
 
     @Override
     public void angelVisit(Knight knight, InputLoader inputLoader) {
+        if (knight.isDead()) {
+            GreatMagician greatMagician = GreatMagician.getInstance();
 
+            knight.setDead(false);
+            knight.setHp(200);
+
+            inputLoader.displayGoodAngel(this, knight);
+            inputLoader.bringToLife(knight);
+
+            greatMagician.attachHelpedPlayers(knight);
+            greatMagician.attachReanimatedPlayers(knight);
+        }
     }
 
     @Override
     public void angelVisit(Wizard wizard, InputLoader inputLoader) {
+        if (wizard.isDead()) {
+            GreatMagician greatMagician = GreatMagician.getInstance();
 
+            wizard.setDead(false);
+            wizard.setHp(120);
+
+            inputLoader.displayGoodAngel(this, wizard);
+            inputLoader.bringToLife(wizard);
+
+            greatMagician.attachHelpedPlayers(wizard);
+            greatMagician.attachReanimatedPlayers(wizard);
+        }
     }
 
     @Override
     public void angelVisit(Rogue rogue, InputLoader inputLoader) {
+        if (rogue.isDead()) {
+            GreatMagician greatMagician = GreatMagician.getInstance();
 
+            rogue.setDead(false);
+            rogue.setHp(180);
+
+            inputLoader.displayGoodAngel(this, rogue);
+            inputLoader.bringToLife(rogue);
+
+            greatMagician.attachHelpedPlayers(rogue);
+            greatMagician.attachReanimatedPlayers(rogue);
+        }
     }
 
     @Override
     public void angelVisit(Pyromancer pyro, InputLoader inputLoader) {
+        if (pyro.isDead()) {
+            GreatMagician greatMagician = GreatMagician.getInstance();
 
+            pyro.setDead(false);
+            pyro.setHp(150);
+
+            inputLoader.displayGoodAngel(this, pyro);
+            inputLoader.bringToLife(pyro);
+
+            greatMagician.attachHelpedPlayers(pyro);
+            greatMagician.attachReanimatedPlayers(pyro);
+        }
     }
 }

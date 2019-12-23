@@ -304,6 +304,32 @@ public final class InputLoader {
         }
     }
 
+    public void bringToLife(final Human human) {
+        try {
+            fileSystem.writeWord("Player");
+            fileSystem.writeCharacter(' ');
+            humanTypeDecider(human);
+            fileSystem.writeInt(human.getPlayerNumber());
+            fileSystem.writeCharacter(' ');
+            fileSystem.writeWord("was");
+            fileSystem.writeCharacter(' ');
+            fileSystem.writeWord("brought");
+            fileSystem.writeCharacter(' ');
+            fileSystem.writeWord("to");
+            fileSystem.writeCharacter(' ');
+            fileSystem.writeWord("life");
+            fileSystem.writeCharacter(' ');
+            fileSystem.writeWord("by");
+            fileSystem.writeCharacter(' ');
+            fileSystem.writeWord("an");
+            fileSystem.writeCharacter(' ');
+            fileSystem.writeWord("angel");
+            fileSystem.writeNewLine();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public void declareDeath(final Human human2, final Human human1) {
         try {
             fileSystem.writeWord("Player");

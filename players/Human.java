@@ -3,12 +3,8 @@ package players;
 import angels.AngelVisitor;
 import angels.VisitedByAngel;
 import constants.Constants;
-import main.Input;
 import main.InputLoader;
-import strategies.KnightGameStrategy;
-import strategies.PyroGameStrategy;
-import strategies.RogueGameStrategy;
-import strategies.WizardGameStrategy;
+import strategies.GameStrategy;
 
 public abstract class Human implements Visitor, Visitable, VisitedByAngel {
     private int hp = Constants.STARTING_HP;
@@ -39,6 +35,312 @@ public abstract class Human implements Visitor, Visitable, VisitedByAngel {
     private int noRaceDamage = Constants.DEFAULT_STARTING_VALUE;
     private int playerNumber = Constants.DEFAULT_PLAYER_NUMBER;
     private static int totalNrPlayers = Constants.DEFAULT_PLAYER_NUMBER;
+    private float knightExecuteMod = Constants.EXEC_KNIGHT_MOD;
+    private float knightSlamMod = Constants.SLAM_KNIGHT_MOD;
+    private float knightFbMod = Constants.FB_IGN_KNIGHT_MOD;
+    private float knightIgniteMod = Constants.FB_IGN_KNIGHT_MOD;
+    private float knightBsMod = Constants.BACKSTAB_KNIGHT_MOD;
+    private float knightParMod = Constants.PARALYSIS_KNIGHT_MOD;
+    private float knightDrainMod = Constants.DRAIN_KNIGHT_MOD;
+    private float knightDeflectMod = Constants.DEFLECT_KNIGHT_MOD;
+    private float pyroExecuteMod = Constants.EXEC_PYRO_MOD;
+    private float pyroSlamMod = Constants.SLAM_PYRO_MOD;
+    private float pyroFbMod = Constants.FB_IGN_PYRO_MOD;
+    private float pyroIgniteMod = Constants.FB_IGN_PYRO_MOD;
+    private float pyroBsMod = Constants.BACKSTAB_PYRO_MOD;
+    private float pyroParMod = Constants.PARALYSIS_PYRO_MOD;
+    private float pyroDrainMod = Constants.DRAIN_PYRO_MOD;
+    private float pyroDeflectMod = Constants.DEFLECT_PYRO_MOD;
+    private float rogueExecuteMod = Constants.EXEC_ROGUE_MOD;
+    private float rogueSlamMod = Constants.SLAM_ROGUE_MOD;
+    private float rogueFbMod = Constants.FB_ROGUE_MOD;
+    private float rogueIgniteMod = Constants.IGNITE_ROGUE_MOD;
+    private float rogueBsMod = Constants.BACKSTAB_ROGUE_MOD;
+    private float rogueParMod = Constants.PARALYSIS_ROGUE_MOD;
+    private float rogueDrainMod = Constants.DRAIN_ROGUE_MOD;
+    private float rogueDeflectMod = Constants.DEFLECT_ROGUE_MOD;
+    private float wizardExecuteMod = Constants.EXECUTE_WIZARD_MOD;
+    private float wizardSlamMod = Constants.SLAM_WIZARD_MOD;
+    private float wizardFbMod = Constants.FB_IGN_WIZARD_MOD;
+    private float wizardIgniteMod = Constants.FB_IGN_WIZARD_MOD;
+    private float wizardBsMod = Constants.BACKSTAB_PARALYSIS_WIZARD_MOD;
+    private float wizardParMod = Constants.BACKSTAB_PARALYSIS_WIZARD_MOD;
+    private float wizardDrainMod = Constants.DRAIN_WIZARD_MOD;
+    private float wizardDeflectMod = Constants.DRAIN_WIZARD_MOD;
+    private boolean paralBeforeOvertimeDmg = false;
+    private boolean imobBeforeOvertimeDmg = false;
+
+    public boolean isParalBeforeOvertimeDmg() {
+        return paralBeforeOvertimeDmg;
+    }
+
+    public void setParalBeforeOvertimeDmg(boolean paralBeforeOvertimeDmg) {
+        this.paralBeforeOvertimeDmg = paralBeforeOvertimeDmg;
+    }
+
+    public boolean isImobBeforeOvertimeDmg() {
+        return imobBeforeOvertimeDmg;
+    }
+
+    public void setImobBeforeOvertimeDmg(boolean imobBeforeOvertimeDmg) {
+        this.imobBeforeOvertimeDmg = imobBeforeOvertimeDmg;
+    }
+
+    public float getWizardExecuteMod() {
+        return wizardExecuteMod;
+    }
+
+    public void setWizardExecuteMod(float wizardExecuteMod) {
+        this.wizardExecuteMod = wizardExecuteMod;
+    }
+
+    public float getWizardSlamMod() {
+        return wizardSlamMod;
+    }
+
+    public void setWizardSlamMod(float wizardSlamMod) {
+        this.wizardSlamMod = wizardSlamMod;
+    }
+
+    public float getWizardFbMod() {
+        return wizardFbMod;
+    }
+
+    public void setWizardFbMod(float wizardFbMod) {
+        this.wizardFbMod = wizardFbMod;
+    }
+
+    public float getWizardIgniteMod() {
+        return wizardIgniteMod;
+    }
+
+    public void setWizardIgniteMod(float wizardIgniteMod) {
+        this.wizardIgniteMod = wizardIgniteMod;
+    }
+
+    public float getWizardBsMod() {
+        return wizardBsMod;
+    }
+
+    public void setWizardBsMod(float wizardBsMod) {
+        this.wizardBsMod = wizardBsMod;
+    }
+
+    public float getWizardParMod() {
+        return wizardParMod;
+    }
+
+    public void setWizardParMod(float wizardParod) {
+        this.wizardParMod = wizardParod;
+    }
+
+    public float getWizardDrainMod() {
+        return wizardDrainMod;
+    }
+
+    public void setWizardDrainMod(float wizardDrainMod) {
+        this.wizardDrainMod = wizardDrainMod;
+    }
+
+    public float getWizardDeflectMod() {
+        return wizardDeflectMod;
+    }
+
+    public void setWizardDeflectMod(float wizardDeflectMod) {
+        this.wizardDeflectMod = wizardDeflectMod;
+    }
+
+    public float getRogueExecuteMod() {
+        return rogueExecuteMod;
+    }
+
+    public void setRogueExecuteMod(float rogueExecuteMod) {
+        this.rogueExecuteMod = rogueExecuteMod;
+    }
+
+    public float getRogueSlamMod() {
+        return rogueSlamMod;
+    }
+
+    public void setRogueSlamMod(float rogueSlamMod) {
+        this.rogueSlamMod = rogueSlamMod;
+    }
+
+    public float getRogueFbMod() {
+        return rogueFbMod;
+    }
+
+    public void setRogueFbMod(float rogueFbMod) {
+        this.rogueFbMod = rogueFbMod;
+    }
+
+    public float getRogueIgniteMod() {
+        return rogueIgniteMod;
+    }
+
+    public void setRogueIgniteMod(float rogueIgniteMod) {
+        this.rogueIgniteMod = rogueIgniteMod;
+    }
+
+    public float getRogueBsMod() {
+        return rogueBsMod;
+    }
+
+    public void setRogueBsMod(float rogueBsMod) {
+        this.rogueBsMod = rogueBsMod;
+    }
+
+    public float getRogueParMod() {
+        return rogueParMod;
+    }
+
+    public void setRogueParMod(float rogueParMod) {
+        this.rogueParMod = rogueParMod;
+    }
+
+    public float getRogueDrainMod() {
+        return rogueDrainMod;
+    }
+
+    public void setRogueDrainMod(float rogueDrainMod) {
+        this.rogueDrainMod = rogueDrainMod;
+    }
+
+    public float getRogueDeflectMod() {
+        return rogueDeflectMod;
+    }
+
+    public void setRogueDeflectMod(float rogueDeflectMod) {
+        this.rogueDeflectMod = rogueDeflectMod;
+    }
+
+    public float getPyroExecuteMod() {
+        return pyroExecuteMod;
+    }
+
+    public void setPyroExecuteMod(float pyroExecuteMod) {
+        this.pyroExecuteMod = pyroExecuteMod;
+    }
+
+    public float getPyroSlamMod() {
+        return pyroSlamMod;
+    }
+
+    public void setPyroSlamMod(float pyroSlamMod) {
+        this.pyroSlamMod = pyroSlamMod;
+    }
+
+    public float getPyroFbMod() {
+        return pyroFbMod;
+    }
+
+    public void setPyroFbMod(float pyroFbMod) {
+        this.pyroFbMod = pyroFbMod;
+    }
+
+    public float getPyroIgniteMod() {
+        return pyroIgniteMod;
+    }
+
+    public void setPyroIgniteMod(float pyroIgniteMod) {
+        this.pyroIgniteMod = pyroIgniteMod;
+    }
+
+    public float getPyroBsMod() {
+        return pyroBsMod;
+    }
+
+    public void setPyroBsMod(float pyroBsMod) {
+        this.pyroBsMod = pyroBsMod;
+    }
+
+    public float getPyroParMod() {
+        return pyroParMod;
+    }
+
+    public void setPyroParMod(float pyroParMod) {
+        this.pyroParMod = pyroParMod;
+    }
+
+    public float getPyroDrainMod() {
+        return pyroDrainMod;
+    }
+
+    public void setPyroDrainMod(float pyroDrainMod) {
+        this.pyroDrainMod = pyroDrainMod;
+    }
+
+    public float getPyroDeflectMod() {
+        return pyroDeflectMod;
+    }
+
+    public void setPyroDeflectMod(float pyroDeflectMod) {
+        this.pyroDeflectMod = pyroDeflectMod;
+    }
+
+    public float getKnightExecuteMod() {
+        return knightExecuteMod;
+    }
+
+    public void setKnightExecuteMod(float knightExecuteMod) {
+        this.knightExecuteMod = knightExecuteMod;
+    }
+
+    public float getKnightSlamMod() {
+        return knightSlamMod;
+    }
+
+    public void setKnightSlamMod(float knightSlamMod) {
+        this.knightSlamMod = knightSlamMod;
+    }
+
+    public float getKnightFbMod() {
+        return knightFbMod;
+    }
+
+    public void setKnightFbMod(float knightFbMod) {
+        this.knightFbMod = knightFbMod;
+    }
+
+    public float getKnightIgniteMod() {
+        return knightIgniteMod;
+    }
+
+    public void setKnightIgniteMod(float knightIgniteMod) {
+        this.knightIgniteMod = knightIgniteMod;
+    }
+
+    public float getKnightBsMod() {
+        return knightBsMod;
+    }
+
+    public void setKnightBsMod(float knightBsMod) {
+        this.knightBsMod = knightBsMod;
+    }
+
+    public float getKnightParMod() {
+        return knightParMod;
+    }
+
+    public void setKnightParMod(float knightParMod) {
+        this.knightParMod = knightParMod;
+    }
+
+    public float getKnightDrainMod() {
+        return knightDrainMod;
+    }
+
+    public void setKnightDrainMod(float knightDrainMod) {
+        this.knightDrainMod = knightDrainMod;
+    }
+
+    public float getKnightDeflectMod() {
+        return knightDeflectMod;
+    }
+
+    public void setKnightDeflectMod(float knightDeflectMod) {
+        this.knightDeflectMod = knightDeflectMod;
+    }
 
     public static int getTotalNrPlayers() {
         return totalNrPlayers;
@@ -276,28 +578,9 @@ public abstract class Human implements Visitor, Visitable, VisitedByAngel {
 
     public abstract void fight(Wizard wizard, InputLoader inputLoader);
 
-    public void playRogueStrategy(final RogueGameStrategy gameStrategy, final Rogue rogue,
-                                  final float mod1, final float mod2, final float grdBonus,
-                                  final Human victim, InputLoader inputLoader) {
-        gameStrategy.play(rogue, mod1, mod2, grdBonus, victim, inputLoader);
-    }
-
-    public void playKnightStrategy(final KnightGameStrategy gameStrategy, final Knight knight,
-                                   final float mod1, final float mod2, final float grdBonus,
-                                   final Human victim, InputLoader inputLoader) {
-        gameStrategy.play(knight, mod1, mod2, grdBonus, victim, inputLoader);
-    }
-
-    public void playPyroStrategy(final PyroGameStrategy gameStrategy, final Pyromancer pyro,
-                                 final float mod1, final float mod2, final float grdBonus,
-                                 final Human victim, InputLoader inputLoader) {
-        gameStrategy.play(pyro, mod1, mod2, grdBonus, victim, inputLoader);
-    }
-
-    public void playWizardStrategy(final WizardGameStrategy gameStrategy, final Wizard wizard,
-                                   final float mod1, final float mod2, final float grdBonus,
-                                   final Human victim, InputLoader inputLoader) {
-        gameStrategy.play(wizard, mod1, mod2, grdBonus, victim, inputLoader);
+    public void playThisStrategy(final GameStrategy gameStrategy, final Human human,
+                                 InputLoader inputLoader) {
+        gameStrategy.play(human, inputLoader);
     }
 
     // Check the player's overtime ability and
@@ -524,8 +807,7 @@ public abstract class Human implements Visitor, Visitable, VisitedByAngel {
         if (getHp() < hpLimit) {
             setHp(0);
             setDead(true);
-            knight.setXp(Math.max(0, Constants.XP_FORMULA_FACTOR
-                    - (knight.getLevel() - getLevel()) * Constants.XP_FORMULA_MULTIPLICATION));
+
         } else {
             // Level factor.
             knight.setExecute(Constants.EXECUTE_DAMAGE

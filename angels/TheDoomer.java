@@ -1,5 +1,6 @@
 package angels;
 
+import GameAdmin.GreatMagician;
 import constants.Constants;
 import main.InputLoader;
 import players.Knight;
@@ -19,21 +20,65 @@ public class TheDoomer extends Angel implements Subject,AngelVisitor {
 
     @Override
     public void angelVisit(Knight knight, InputLoader inputLoader) {
+        if (!knight.isDead()) {
+            GreatMagician greatMagician = GreatMagician.getInstance();
 
+            knight.setDead(true);
+            knight.setHp(-1);
+
+            inputLoader.displayBadAngel(this, knight);
+            inputLoader.deathByAngel(knight);
+
+            greatMagician.attachHitPlayers(knight);
+            greatMagician.attachKilledPlayers(knight);
+        }
     }
 
     @Override
     public void angelVisit(Wizard wizard, InputLoader inputLoader) {
+        if (!wizard.isDead()) {
+            GreatMagician greatMagician = GreatMagician.getInstance();
 
+            wizard.setDead(true);
+            wizard.setHp(-2);
+
+            inputLoader.displayBadAngel(this, wizard);
+            inputLoader.deathByAngel(wizard);
+
+            greatMagician.attachHitPlayers(wizard);
+            greatMagician.attachKilledPlayers(wizard);
+        }
     }
 
     @Override
     public void angelVisit(Rogue rogue, InputLoader inputLoader) {
+        if (!rogue.isDead()) {
+            GreatMagician greatMagician = GreatMagician.getInstance();
 
+            rogue.setDead(true);
+            rogue.setHp(-3);
+
+            inputLoader.displayBadAngel(this, rogue);
+            inputLoader.deathByAngel(rogue);
+
+            greatMagician.attachHitPlayers(rogue);
+            greatMagician.attachKilledPlayers(rogue);
+        }
     }
 
     @Override
     public void angelVisit(Pyromancer pyro, InputLoader inputLoader) {
+        if (!pyro.isDead()) {
+            GreatMagician greatMagician = GreatMagician.getInstance();
 
+            pyro.setDead(true);
+            pyro.setHp(-4);
+
+            inputLoader.displayBadAngel(this, pyro);
+            inputLoader.deathByAngel(pyro);
+
+            greatMagician.attachHitPlayers(pyro);
+            greatMagician.attachKilledPlayers(pyro);
+        }
     }
 }

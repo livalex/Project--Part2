@@ -2,23 +2,20 @@ package strategies;
 
 import main.InputLoader;
 import players.Human;
-import players.Pyromancer;
 
-public class OffensivePyroStrategy implements PyroGameStrategy {
+public class OffensivePyroStrategy implements GameStrategy {
     @Override
-    public void play(final Pyromancer pyro, final float modifier1,
-                     final float modifier2, final float grdBonus,
-                     final Human victim, InputLoader inputLoader) {
+    public void play(final Human human, InputLoader inputLoader) {
         // De sters param victim
-        pyro.setHp(pyro.getHp() - (pyro.getHp() / 4));
+        human.setHp(human.getHp() - (human.getHp() / 4));
 
-        pyro.setPyroBsMod(pyro.getPyroBsMod() + 0.7f);
-        pyro.setPyroParMod(pyro.getPyroParMod() + 0.7f);
-        pyro.setPyroDrainMod(pyro.getPyroDrainMod() + 0.7f);
-        pyro.setPyroDeflectMod(pyro.getPyroDeflectMod() + 0.7f);
-        pyro.setPyroExecuteMod(pyro.getPyroExecuteMod() + 0.7f);
-        pyro.setPyroSlamMod(pyro.getPyroSlamMod() + 0.7f);
-        pyro.setPyroFbMod(pyro.getPyroFbMod() + 0.7f);
-        pyro.setPyroIgniteMod(pyro.getPyroIgniteMod() + 0.7f);
+        human.setWizardFbMod(human.getPyroFbMod() + 0.7f);
+        human.setWizardIgniteMod(human.getPyroIgniteMod() + 0.7f);
+        human.setKnightFbMod(human.getPyroFbMod() + 0.7f);
+        human.setKnightIgniteMod(human.getPyroIgniteMod() + 0.7f);
+        human.setRogueFbMod(human.getRogueFbMod() + 0.7f);
+        human.setRogueIgniteMod(human.getRogueIgniteMod() + 0.7f);
+        human.setPyroFbMod(human.getPyroFbMod() + 0.7f);
+        human.setPyroIgniteMod(human.getPyroIgniteMod()+ 0.7f);
     }
 }
