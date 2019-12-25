@@ -27,11 +27,9 @@ public class SmallAngel extends Angel implements Subject, AngelVisitor {
 
             knight.setHp(knight.getHp() + 10);
 
-            // !!!
             if (knight.getHp() > knight.getMaxHp()) {
                 knight.setHp(knight.getMaxHp());
             }
-            // !!!
 
             knight.setWizardExecuteMod(knight.getWizardExecuteMod() + 0.1f);
             knight.setWizardSlamMod(knight.getWizardSlamMod() + 0.1f);
@@ -50,6 +48,7 @@ public class SmallAngel extends Angel implements Subject, AngelVisitor {
 
     @Override
     public void angelVisit(Wizard wizard, InputLoader inputLoader) {
+
         if (!wizard.isDead()) {
             GreatMagician greatMagician = GreatMagician.getInstance();
 
@@ -57,11 +56,9 @@ public class SmallAngel extends Angel implements Subject, AngelVisitor {
 
             wizard.setHp(wizard.getHp() + 25);
 
-            // !!!
             if (wizard.getHp() > wizard.getMaxHp()) {
                 wizard.setHp(wizard.getMaxHp());
             }
-            // !!!
 
             wizard.setRogueDrainMod(wizard.getRogueDrainMod() + 0.1f);
             wizard.setRogueDeflectMod(wizard.getRogueDeflectMod() + 0.1f);
@@ -85,11 +82,9 @@ public class SmallAngel extends Angel implements Subject, AngelVisitor {
 
             rogue.setHp(rogue.getHp() + 20);
 
-            // !!!
             if (rogue.getHp() > rogue.getMaxHp()) {
                 rogue.setHp(rogue.getMaxHp());
             }
-            // !!!
 
             rogue.setRogueBsMod(rogue.getRogueBsMod() + 0.05f);
             rogue.setRogueParMod(rogue.getRogueParMod() + 0.05f);
@@ -113,11 +108,9 @@ public class SmallAngel extends Angel implements Subject, AngelVisitor {
 
             pyro.setHp(pyro.getHp() + 15);
 
-            // !!!
             if (pyro.getHp() > pyro.getMaxHp()) {
                 pyro.setHp(pyro.getMaxHp());
             }
-            // !!!
 
             pyro.setWizardFbMod(pyro.getPyroFbMod() + 0.15f);
             pyro.setWizardIgniteMod(pyro.getPyroIgniteMod() + 0.15f);

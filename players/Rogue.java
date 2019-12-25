@@ -4,7 +4,6 @@ import angels.AngelVisitor;
 import angels.VisitedByAngel;
 import constants.Constants;
 import main.InputLoader;
-import strategies.*;
 
 public class Rogue extends Human implements Visitable, Visitor, VisitedByAngel {
 
@@ -25,32 +24,32 @@ public class Rogue extends Human implements Visitable, Visitor, VisitedByAngel {
 
     // Accept the visitor.
     @Override
-    public final void accept(final Visitor visitor, InputLoader inputLoader) {
-        visitor.fight(this, inputLoader);
+    public final void accept(final Visitor visitor) {
+        visitor.fight(this);
     }
 
     // Be the visitor.
     @Override
-    public final void fight(final Pyromancer pyromancer, InputLoader inputLoader) {
+    public final void fight(final Pyromancer pyromancer) {
         super.pyroGame(pyromancer, pyromancer.getRogueFbMod(),
-                pyromancer.getRogueIgniteMod(), Constants.VOLCANIC_GRD_BONUS, inputLoader);
+                pyromancer.getRogueIgniteMod(), Constants.VOLCANIC_GRD_BONUS);
     }
 
     @Override
-    public final void fight(final Rogue rogue, InputLoader inputLoader) {
+    public final void fight(final Rogue rogue) {
         super.rogueGame(rogue, rogue.getRogueBsMod(),
-                rogue.getRogueParMod(), Constants.WOODS_GRD_BONUS, inputLoader);
+                rogue.getRogueParMod(), Constants.WOODS_GRD_BONUS);
     }
 
     @Override
-    public final void fight(final Knight knight, InputLoader inputLoader) {
+    public final void fight(final Knight knight) {
         super.knightGame(knight, knight.getRogueExecuteMod(),
-                knight.getRogueSlamMod(), Constants.LAND_GRD_BONUS, inputLoader);
+                knight.getRogueSlamMod(), Constants.LAND_GRD_BONUS);
     }
 
     @Override
-    public final void fight(final Wizard wizard, InputLoader inputLoader) {
+    public final void fight(final Wizard wizard) {
         super.wizardGame(wizard, wizard.getRogueDrainMod(),
-                wizard.getRogueDeflectMod(), Constants.DESERT_GRD_BONUS, inputLoader);
+                wizard.getRogueDeflectMod(), Constants.DESERT_GRD_BONUS);
     }
 }

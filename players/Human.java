@@ -17,22 +17,22 @@ public abstract class Human implements Visitor, Visitable, VisitedByAngel {
     private boolean igniteFlag = false;
     private boolean dead = false;
     private int overyimeAbilityCounter = Constants.ABILITY_COUNTER;
-    private int fireBlast = Constants.FIREBLAST_DAMAGE;
-    private int ignite = Constants.IGNITE_BASE_DAMAGE;
-    private int igniteDmgTakeRound = Constants.PYRO_INCREASE;
-    private int igniteDmgGiveRound = Constants.PYRO_INCREASE;
+    private float fireBlast = Constants.FIREBLAST_DAMAGE;
+    private float ignite = Constants.IGNITE_BASE_DAMAGE;
+    private float igniteDmgTakeRound = Constants.PYRO_INCREASE;
+    private float igniteDmgGiveRound = Constants.PYRO_INCREASE;
     private boolean newOvertimeAffection = false;
     private int playerType = Constants.DEFAULT_PLAYER;
-    private int execute = Constants.EXECUTE_DAMAGE;
-    private int slam = Constants.SLAM_DAMAGE;
+    private float execute = Constants.EXECUTE_DAMAGE;
+    private float slam = Constants.SLAM_DAMAGE;
     private boolean immobility = false;
     private int backStabCounter = Constants.DEFAULT_BS_COUNTER;
-    private int backStab = Constants.BACKSTAB_DEFAULT_DAMAGE;
+    private float backStab = Constants.BACKSTAB_DEFAULT_DAMAGE;
     private boolean paralysed = false;
-    private int paralysis = Constants.PARALYSIS_DEFAULT_DAMAGE;
+    private float paralysis = Constants.PARALYSIS_DEFAULT_DAMAGE;
     private boolean woodsHitFlag = false;
-    private int paralysisDmgTakeRound = Constants.DEFAULT_STARTING_VALUE;
-    private int noRaceDamage = Constants.DEFAULT_STARTING_VALUE;
+    private float paralysisDmgTakeRound = Constants.DEFAULT_STARTING_VALUE;
+    private float noRaceDamage = Constants.DEFAULT_STARTING_VALUE;
     private int playerNumber = Constants.DEFAULT_PLAYER_NUMBER;
     private static int totalNrPlayers = Constants.DEFAULT_PLAYER_NUMBER;
     private float knightExecuteMod = Constants.EXEC_KNIGHT_MOD;
@@ -69,6 +69,24 @@ public abstract class Human implements Visitor, Visitable, VisitedByAngel {
     private float wizardDeflectMod = Constants.DRAIN_WIZARD_MOD;
     private boolean paralBeforeOvertimeDmg = false;
     private boolean imobBeforeOvertimeDmg = false;
+    private int playerStartRoundXp = Constants.DEFAULT_STARTING_VALUE;
+    private boolean killedByDoomer = false;
+
+    public boolean isKilledByDoomer() {
+        return killedByDoomer;
+    }
+
+    public void setKilledByDoomer(boolean killedByDoomer) {
+        this.killedByDoomer = killedByDoomer;
+    }
+
+    public int getPlayerStartRoundXp() {
+        return playerStartRoundXp;
+    }
+
+    public void setPlayerStartRoundXp(int playerStartRoundXp) {
+        this.playerStartRoundXp = playerStartRoundXp;
+    }
 
     public boolean isParalBeforeOvertimeDmg() {
         return paralBeforeOvertimeDmg;
@@ -358,19 +376,19 @@ public abstract class Human implements Visitor, Visitable, VisitedByAngel {
         this.playerNumber = playerNumber;
     }
 
-    public final int getNoRaceDamage() {
+    public final float getNoRaceDamage() {
         return noRaceDamage;
     }
 
-    public final void setNoRaceDamage(final int noRaceDamage) {
+    public final void setNoRaceDamage(final float noRaceDamage) {
         this.noRaceDamage = noRaceDamage;
     }
 
-    public final int getParalysisDmgTakeRound() {
+    public final float getParalysisDmgTakeRound() {
         return paralysisDmgTakeRound;
     }
 
-    public final void setParalysisDmgTakeRound(final int paralysisDmgTakeRound) {
+    public final void setParalysisDmgTakeRound(final float paralysisDmgTakeRound) {
         this.paralysisDmgTakeRound = paralysisDmgTakeRound;
     }
 
@@ -390,11 +408,11 @@ public abstract class Human implements Visitor, Visitable, VisitedByAngel {
         this.paralysed = paralysed;
     }
 
-    public final int getParalysis() {
+    public final float getParalysis() {
         return paralysis;
     }
 
-    public final void setParalysis(final int paralysis) {
+    public final void setParalysis(final float paralysis) {
         this.paralysis = paralysis;
     }
 
@@ -406,11 +424,11 @@ public abstract class Human implements Visitor, Visitable, VisitedByAngel {
         this.backStabCounter = backStabCounter;
     }
 
-    public final int getBackStab() {
+    public final float getBackStab() {
         return backStab;
     }
 
-    public final void setBackStab(final int backStab) {
+    public final void setBackStab(final float backStab) {
         this.backStab = backStab;
     }
 
@@ -422,19 +440,19 @@ public abstract class Human implements Visitor, Visitable, VisitedByAngel {
         this.immobility = immobility;
     }
 
-    public final int getSlam() {
+    public final float getSlam() {
         return slam;
     }
 
-    public final void setSlam(final int slam) {
+    public final void setSlam(final float slam) {
         this.slam = slam;
     }
 
-    public final int getExecute() {
+    public final float getExecute() {
         return execute;
     }
 
-    public final void setExecute(final int execute) {
+    public final void setExecute(final float execute) {
         this.execute = execute;
     }
 
@@ -454,35 +472,35 @@ public abstract class Human implements Visitor, Visitable, VisitedByAngel {
         this.newOvertimeAffection = newOvertimeAffection;
     }
 
-    public final int getIgniteDmgGiveRound() {
+    public final float getIgniteDmgGiveRound() {
         return igniteDmgGiveRound;
     }
 
-    public final void setIgniteDmgGiveRound(final int igniteDmgGiveRound) {
+    public final void setIgniteDmgGiveRound(final float igniteDmgGiveRound) {
         this.igniteDmgGiveRound = igniteDmgGiveRound;
     }
 
-    public final int getIgniteDmgTakeRound() {
+    public final float getIgniteDmgTakeRound() {
         return igniteDmgTakeRound;
     }
 
-    public final void setIgniteDmgTakeRound(final int igniteDmgRound) {
+    public final void setIgniteDmgTakeRound(final float igniteDmgRound) {
         this.igniteDmgTakeRound = igniteDmgRound;
     }
 
-    public final int getFireBlast() {
+    public final float getFireBlast() {
         return fireBlast;
     }
 
-    public final void setFireBlast(final int fireBlast) {
+    public final void setFireBlast(final float fireBlast) {
         this.fireBlast = fireBlast;
     }
 
-    public final int getIgnite() {
+    public final float getIgnite() {
         return ignite;
     }
 
-    public final void setIgnite(final int ignite) {
+    public final void setIgnite(final float ignite) {
         this.ignite = ignite;
     }
 
@@ -568,15 +586,15 @@ public abstract class Human implements Visitor, Visitable, VisitedByAngel {
 
     public abstract void acceptAngel(AngelVisitor angelVisitor, InputLoader inputLoader);
 
-    public abstract void accept(Visitor visitor, InputLoader inputLoader);
+    public abstract void accept(Visitor visitor);
 
-    public abstract void fight(Pyromancer pyromancer, InputLoader inputLoader);
+    public abstract void fight(Pyromancer pyromancer);
 
-    public abstract void fight(Rogue rogue, InputLoader inputLoader);
+    public abstract void fight(Rogue rogue);
 
-    public abstract void fight(Knight knight, InputLoader inputLoader);
+    public abstract void fight(Knight knight);
 
-    public abstract void fight(Wizard wizard, InputLoader inputLoader);
+    public abstract void fight(Wizard wizard);
 
     public void playThisStrategy(final GameStrategy gameStrategy, final Human human,
                                  InputLoader inputLoader) {
@@ -599,7 +617,7 @@ public abstract class Human implements Visitor, Visitable, VisitedByAngel {
                         setOveryimeAbilityCounter(Constants.NORMAL_HIT);
                     }
 
-                    setHp(getHp() - getParalysisDmgTakeRound());
+                    setHp(getHp() - Math.round(getParalysisDmgTakeRound()));
                     setOveryimeAbilityCounter(getOveryimeAbilityCounter() - 1);
                     if (getHp() <= 0) {
                         setDead(true);
@@ -609,7 +627,7 @@ public abstract class Human implements Visitor, Visitable, VisitedByAngel {
                 // For ignite effect
                 if (isIgniteFlag()) {
                     setOveryimeAbilityCounter(2);
-                    setHp(getHp() - getIgniteDmgTakeRound());
+                    setHp(getHp() - Math.round(getIgniteDmgTakeRound()));
                     setOveryimeAbilityCounter(getOveryimeAbilityCounter() - 1);
                     if (getHp() <= 0) {
                         setDead(true);
@@ -620,7 +638,7 @@ public abstract class Human implements Visitor, Visitable, VisitedByAngel {
                 // But for abilities that have been given
                 // Earlier in the game.
                 if (isIgniteFlag()) {
-                    setHp(getHp() - getIgniteDmgTakeRound());
+                    setHp(getHp() - Math.round(getIgniteDmgTakeRound()));
                     setOveryimeAbilityCounter(getOveryimeAbilityCounter() - 1);
                     if (getOveryimeAbilityCounter() == 0) {
                         setIgniteFlag(false);
@@ -631,7 +649,7 @@ public abstract class Human implements Visitor, Visitable, VisitedByAngel {
                 }
 
                 if (isParalysed()) {
-                    setHp(getHp() - getParalysisDmgTakeRound());
+                    setHp(getHp() - Math.round(getParalysisDmgTakeRound()));
                     setOveryimeAbilityCounter(getOveryimeAbilityCounter() - 1);
                     if (getOveryimeAbilityCounter() == 0) {
                         setParalysed(false);
@@ -660,8 +678,7 @@ public abstract class Human implements Visitor, Visitable, VisitedByAngel {
      * @param groundBonus
      */
     public void wizardGame(final Wizard wizard, final float modifier1,
-                           final float modifier2, final float groundBonus,
-                           InputLoader inputLoader) {
+                           final float modifier2, final float groundBonus) {
         float percentage;
         int drainDamage;
         int finalDamage;
@@ -718,7 +735,6 @@ public abstract class Human implements Visitor, Visitable, VisitedByAngel {
         if (getHp() <= 0) {
             setDead(true);
         }
-
     }
 
     /**
@@ -734,8 +750,7 @@ public abstract class Human implements Visitor, Visitable, VisitedByAngel {
      * @param groundBonus
      */
     public void pyroGame(final Pyromancer pyromancer, final float modifier1,
-                         final float modifier2, final float groundBonus,
-                         InputLoader inputLoader) {
+                         final float modifier2, final float groundBonus) {
 
         // Level factor.
         pyromancer.setFireBlast(Constants.FIREBLAST_DAMAGE
@@ -759,10 +774,10 @@ public abstract class Human implements Visitor, Visitable, VisitedByAngel {
         pyromancer.setNoRaceDamage(pyromancer.getFireBlast() + pyromancer.getIgnite());
 
         // Modifiers factor.
-        pyromancer.setFireBlast(Math.round(pyromancer.getFireBlast()
-                + modifier1 * pyromancer.getFireBlast()));
-        pyromancer.setIgnite(Math.round(pyromancer.getIgnite()
-                + modifier2 * pyromancer.getIgnite()));
+        pyromancer.setFireBlast(Math.round((pyromancer.getFireBlast()
+                + modifier1 * pyromancer.getFireBlast()))); // !!!!!!
+        pyromancer.setIgnite(Math.round((pyromancer.getIgnite()
+                + modifier2 * pyromancer.getIgnite()))); // !!!!!!
         pyromancer.setIgniteDmgGiveRound(Math.round(pyromancer.getIgniteDmgGiveRound()
                 + modifier2 * pyromancer.getIgniteDmgGiveRound()));
 
@@ -773,7 +788,7 @@ public abstract class Human implements Visitor, Visitable, VisitedByAngel {
         setImmobility(false);
         setParalysed(false);
 
-        int finalDamage = pyromancer.getFireBlast() + pyromancer.getIgnite();
+        int finalDamage = Math.round(pyromancer.getFireBlast() + pyromancer.getIgnite());
         setHp(getHp() - finalDamage);
 
         if (getHp() <= 0) {
@@ -794,8 +809,7 @@ public abstract class Human implements Visitor, Visitable, VisitedByAngel {
      * @param groundBonus
      */
     public void knightGame(final Knight knight, final float modifier1,
-                           final float modifier2, final float groundBonus,
-                           InputLoader inputLoader) {
+                           final float modifier2, final float groundBonus) {
         float percentage = Constants.HP_LIMIT_FPARAM
                 + knight.getLevel() * Constants.HP_LIMIT_SPARAM;
         if (percentage > Constants.MAX_KNIGHT_HP_LIMIT) {
@@ -834,7 +848,7 @@ public abstract class Human implements Visitor, Visitable, VisitedByAngel {
             setImmobility(true);
             setParalysed(false);
 
-            int finalDamage = knight.getExecute() + knight.getSlam();
+            int finalDamage = Math.round(knight.getExecute() + knight.getSlam());
             setHp(getHp() - finalDamage);
 
             if (getHp() <= 0) {
@@ -856,8 +870,7 @@ public abstract class Human implements Visitor, Visitable, VisitedByAngel {
      * @param groundBonus
      */
     public void rogueGame(final Rogue rogue, final float modifier1,
-                          final float modifier2, final float groundBonus,
-                          InputLoader inputLoader) {
+                          final float modifier2, final float groundBonus) {
         // Level factor.
         rogue.setBackStab(Constants.BACKSTAB_DEFAULT_DAMAGE
                 + rogue.getLevel() * Constants.BACKSTAB_LVL_INC);
@@ -884,9 +897,8 @@ public abstract class Human implements Visitor, Visitable, VisitedByAngel {
         }
 
         // Modifiers factor.
-        rogue.setBackStab(Math.round(rogue.getBackStab() + modifier1 * rogue.getBackStab()));
-        rogue.setParalysis(Math.round(rogue.getParalysis() + modifier2 * rogue.getParalysis()));
-
+        rogue.setBackStab((rogue.getBackStab() + modifier1 * rogue.getBackStab()));
+        rogue.setParalysis((rogue.getParalysis() + modifier2 * rogue.getParalysis()));  //  !!!!!!!
         // Critical hit factor.
         if (rogue.getCurrentGround() == Constants.THREE_TYPE_GROUND
                 && rogue.getBackStabCounter() == Constants.DEFAULT_BS_COUNTER) {
@@ -901,12 +913,16 @@ public abstract class Human implements Visitor, Visitable, VisitedByAngel {
         setImmobility(false);
         setParalysed(true);
 
-        int finalDamage = rogue.getBackStab() + rogue.getParalysis();
-        setHp(getHp() - finalDamage);
+        float finalDamage = (rogue.getBackStab() + rogue.getParalysis());
+        setHp(getHp() - Math.round(finalDamage));
         rogue.setBackStabCounter(rogue.getBackStabCounter() + 1);
 
         if (getHp() <= 0) {
             setDead(true);
+            setNewOvertimeAffection(false);
+            setIgniteFlag(false);
+            setImmobility(false);
+            setParalysed(false);
         }
     }
 }

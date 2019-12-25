@@ -26,34 +26,34 @@ public class Wizard extends Human implements Visitable, Visitor, VisitedByAngel 
 
     // Accept the visitor.
     @Override
-    public final void accept(final Visitor visitor, InputLoader inputLoader) {
-        visitor.fight(this, inputLoader);
+    public final void accept(final Visitor visitor) {
+        visitor.fight(this);
     }
 
     // Be the visitor.
     @Override
-    public final void fight(final Pyromancer pyromancer, InputLoader inputLoader) {
+    public final void fight(final Pyromancer pyromancer) {
         super.pyroGame(pyromancer, pyromancer.getWizardFbMod(),
-                pyromancer.getWizardIgniteMod(), Constants.VOLCANIC_GRD_BONUS, inputLoader);
+                pyromancer.getWizardIgniteMod(), Constants.VOLCANIC_GRD_BONUS);
 
     }
 
     @Override
-    public final void fight(final Rogue rogue, InputLoader inputLoader) {
+    public final void fight(final Rogue rogue) {
         super.rogueGame(rogue, rogue.getWizardBsMod(),
-                rogue.getWizardParMod(), Constants.WOODS_GRD_BONUS, inputLoader);
+                rogue.getWizardParMod(), Constants.WOODS_GRD_BONUS);
 
     }
 
     @Override
-    public final void fight(final Knight knight, InputLoader inputLoader) {
+    public final void fight(final Knight knight) {
         super.knightGame(knight, knight.getWizardExecuteMod(),
-                knight.getWizardSlamMod(), Constants.LAND_GRD_BONUS, inputLoader);
+                knight.getWizardSlamMod(), Constants.LAND_GRD_BONUS);
     }
 
     @Override
-    public final void fight(final Wizard wizard, InputLoader inputLoader) {
+    public final void fight(final Wizard wizard) {
         super.wizardGame(wizard, wizard.getWizardDrainMod(),
-                wizard.getWizardDrainMod(), Constants.DESERT_GRD_BONUS, inputLoader);
+                wizard.getWizardDrainMod(), Constants.DESERT_GRD_BONUS);
     }
 }

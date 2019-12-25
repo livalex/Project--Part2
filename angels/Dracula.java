@@ -21,10 +21,6 @@ public class Dracula extends Angel implements Subject, AngelVisitor {
     @Override
     public void angelVisit(Knight knight, InputLoader inputLoader) {
         if (!knight.isDead()) {
-            // !!!
-            System.out.println("Mod 1 before dracula " + knight.getKnightExecuteMod() + " for player " + knight.getPlayerNumber());
-            System.out.println("Mod 2 before dracula " + knight.getKnightSlamMod() + " for player " + knight.getPlayerNumber());
-            /// !!!
 
             GreatMagician greatMagician = GreatMagician.getInstance();
 
@@ -51,10 +47,6 @@ public class Dracula extends Angel implements Subject, AngelVisitor {
 
             greatMagician.attachHitPlayers(knight);
 
-            // !!!
-            System.out.println("Mod 1 after dracula " + knight.getKnightExecuteMod() + " for player " + knight.getPlayerNumber());
-            System.out.println("Mod 2 after dracula " + knight.getKnightSlamMod() + " for player " + knight.getPlayerNumber());
-            /// !!!
         }
     }
 
@@ -129,14 +121,14 @@ public class Dracula extends Angel implements Subject, AngelVisitor {
                 greatMagician.attachKilledPlayers(pyro);
             }
 
-            pyro.setWizardFbMod(pyro.getPyroFbMod() - 0.1f);
-            pyro.setWizardIgniteMod(pyro.getPyroIgniteMod() - 0.1f);
-            pyro.setKnightFbMod(pyro.getPyroFbMod() - 0.1f);
-            pyro.setKnightIgniteMod(pyro.getPyroIgniteMod() - 0.1f);
-            pyro.setRogueFbMod(pyro.getRogueFbMod() - 0.1f);
-            pyro.setRogueIgniteMod(pyro.getRogueIgniteMod() - 0.1f);
-            pyro.setPyroFbMod(pyro.getPyroFbMod() - 0.1f);
-            pyro.setPyroIgniteMod(pyro.getPyroIgniteMod() - 0.1f);
+            pyro.setWizardFbMod(pyro.getPyroFbMod() - 0.15f);
+            pyro.setWizardIgniteMod(pyro.getPyroIgniteMod() - 0.15f);
+            pyro.setKnightFbMod(pyro.getPyroFbMod() - 0.15f);
+            pyro.setKnightIgniteMod(pyro.getPyroIgniteMod() - 0.15f);
+            pyro.setRogueFbMod(pyro.getRogueFbMod() - 0.15f);
+            pyro.setRogueIgniteMod(pyro.getRogueIgniteMod() - 0.15f);
+            pyro.setPyroFbMod(pyro.getPyroFbMod() - 0.15f);
+            pyro.setPyroIgniteMod(pyro.getPyroIgniteMod() - 0.15f);
 
             greatMagician.attachHitPlayers(pyro);
         }

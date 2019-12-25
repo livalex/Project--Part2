@@ -9,6 +9,7 @@ import players.Rogue;
 import players.Wizard;
 
 public class Spawner extends Angel implements Subject, AngelVisitor {
+
     public Spawner(final int abscissa, final int ordinate) {
         setMyAbscissa(abscissa);
         setMyOrdinate(ordinate);
@@ -24,6 +25,9 @@ public class Spawner extends Angel implements Subject, AngelVisitor {
 
             knight.setDead(false);
             knight.setHp(200);
+            if (!knight.isKilledByDoomer()) {
+                knight.setXp(knight.getPlayerStartRoundXp());
+            }
 
             inputLoader.displayGoodAngel(this, knight);
             inputLoader.bringToLife(knight);
@@ -40,6 +44,9 @@ public class Spawner extends Angel implements Subject, AngelVisitor {
 
             wizard.setDead(false);
             wizard.setHp(120);
+            if (!wizard.isKilledByDoomer()) {
+                wizard.setXp(wizard.getPlayerStartRoundXp());
+            }
 
             inputLoader.displayGoodAngel(this, wizard);
             inputLoader.bringToLife(wizard);
@@ -56,6 +63,9 @@ public class Spawner extends Angel implements Subject, AngelVisitor {
 
             rogue.setDead(false);
             rogue.setHp(180);
+            if (!rogue.isKilledByDoomer()) {
+                rogue.setXp(rogue.getPlayerStartRoundXp());
+            }
 
             inputLoader.displayGoodAngel(this, rogue);
             inputLoader.bringToLife(rogue);
@@ -72,6 +82,9 @@ public class Spawner extends Angel implements Subject, AngelVisitor {
 
             pyro.setDead(false);
             pyro.setHp(150);
+            if (!pyro.isKilledByDoomer()) {
+                pyro.setXp(pyro.getPlayerStartRoundXp());
+            }
 
             inputLoader.displayGoodAngel(this, pyro);
             inputLoader.bringToLife(pyro);

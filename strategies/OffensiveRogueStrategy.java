@@ -6,7 +6,6 @@ import players.Human;
 public class OffensiveRogueStrategy implements GameStrategy {
     @Override
     public void play(final Human human, InputLoader inputLoader) {
-        // De sters param victim
         human.setHp(human.getHp() - (human.getHp() / 7));
 
         human.setRogueBsMod(human.getRogueBsMod() + 0.4f);

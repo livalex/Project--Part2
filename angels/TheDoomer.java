@@ -25,6 +25,7 @@ public class TheDoomer extends Angel implements Subject,AngelVisitor {
 
             knight.setDead(true);
             knight.setHp(-1);
+            knight.setKilledByDoomer(true);
 
             inputLoader.displayBadAngel(this, knight);
             inputLoader.deathByAngel(knight);
@@ -41,6 +42,7 @@ public class TheDoomer extends Angel implements Subject,AngelVisitor {
 
             wizard.setDead(true);
             wizard.setHp(-2);
+            wizard.setKilledByDoomer(true);
 
             inputLoader.displayBadAngel(this, wizard);
             inputLoader.deathByAngel(wizard);
@@ -57,6 +59,7 @@ public class TheDoomer extends Angel implements Subject,AngelVisitor {
 
             rogue.setDead(true);
             rogue.setHp(-3);
+            rogue.setKilledByDoomer(true);
 
             inputLoader.displayBadAngel(this, rogue);
             inputLoader.deathByAngel(rogue);
@@ -73,6 +76,7 @@ public class TheDoomer extends Angel implements Subject,AngelVisitor {
 
             pyro.setDead(true);
             pyro.setHp(-4);
+            pyro.setKilledByDoomer(true);
 
             inputLoader.displayBadAngel(this, pyro);
             inputLoader.deathByAngel(pyro);

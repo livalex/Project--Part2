@@ -30,8 +30,6 @@ public final class InputLoader {
         return inputLoader;
     }
 
-    // FileSystem fileSystem = new FileSystem(inpPath, outPath);
-
     public Input load() {
         int n = 0, m = 0, p = 0, r = 0;
         ArrayList<String> battleGround = new ArrayList<>();
@@ -69,7 +67,6 @@ public final class InputLoader {
 
             for (int j = 0; j < r; ++j) {
                 numberAngelsRound.add(fileSystem.nextInt());
-                //System.out.println(numberAngelsRound.get(j));
                 if (numberAngelsRound.get(j) != 0) {
                     for (int z = 0; z < numberAngelsRound.get(j); ++z) {
                         angelTypes.add(fileSystem.nextWord());
@@ -139,6 +136,7 @@ public final class InputLoader {
             }
 
             fileSystem.close();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -184,9 +182,6 @@ public final class InputLoader {
 
     public void displayAngel(final Angel angel) {
         try {
-            // FileSystem fileSystem = new FileSystem(inpPath, outPath);
-
-            // System.out.println("Display");
             fileSystem.writeWord("Angel");
             fileSystem.writeCharacter(' ');
             angelTypeDecider(angel, fileSystem);
@@ -207,9 +202,6 @@ public final class InputLoader {
 
     public void displayRound(final int roundNumber) {
         try {
-            //FileSystem fileSystem = new FileSystem(inpPath, outPath);
-
-            // System.out.println("Round");
             fileSystem.writeWord("~~");
             fileSystem.writeCharacter(' ');
             fileSystem.writeWord("Round");

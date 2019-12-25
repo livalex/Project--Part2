@@ -6,7 +6,6 @@ import players.Human;
 public class DefensiveKnightStrategy implements GameStrategy {
     @Override
     public void play(final Human human, InputLoader inputLoader) {
-        // De sters param victim
         human.setHp(human.getHp() + (human.getHp() / 4));
 
         human.setWizardExecuteMod(human.getWizardExecuteMod() - 0.2f);

@@ -1,12 +1,14 @@
 package angels;
 
+import main.InputLoader;
+
 public class AngelsFactory {
 
     /* We use this method to get the type of
     angel that we want.
      */
-    public Angel getAngel(final String angelType,
-                          final int x, final int y) {
+    public Angel getAngel(final String angelType, final int x,
+                          final int y, InputLoader inputLoader) {
         if (angelType.equals("DamageAngel")) {
             return new DamageAngel(x, y);
         } else if (angelType.equals("DarkAngel")) {

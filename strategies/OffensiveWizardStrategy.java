@@ -7,7 +7,6 @@ import players.Wizard;
 public class OffensiveWizardStrategy implements GameStrategy {
     @Override
     public void play(final Human human, InputLoader inputLoader) {
-        // De sters param victim
         human.setHp(human.getHp() - (human.getHp() / 10));
 
         human.setRogueDrainMod(human.getRogueDrainMod() + 0.6f);

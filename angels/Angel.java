@@ -13,6 +13,15 @@ public abstract class Angel implements Subject, AngelVisitor {
     private int myOrdinate = Constants.DEFAULT_ORDINATE;
     private int angelType = Constants.DAMAGE_ANGEL;
     private GreatMagician greatMagician = GreatMagician.getInstance();
+    private boolean spawnMessageDisplay = false;
+
+    public boolean isSpawnMessageDisplay() {
+        return spawnMessageDisplay;
+    }
+
+    public void setSpawnMessageDisplay(boolean spawnMessageDisplay) {
+        this.spawnMessageDisplay = spawnMessageDisplay;
+    }
 
     public GreatMagician getGreatMagician() {
         return greatMagician;

@@ -9,6 +9,7 @@ import players.Rogue;
 import players.Wizard;
 
 public class LevelUpAngel extends Angel implements Subject, AngelVisitor {
+
     public LevelUpAngel(final int abscissa, final int ordinate) {
         setMyAbscissa(abscissa);
         setMyOrdinate(ordinate);
@@ -90,11 +91,8 @@ public class LevelUpAngel extends Angel implements Subject, AngelVisitor {
             rogue.setLevel(level);
 
             int maxHp = rogue.getMaxHp();
-            System.out.println("MaxHp " + maxHp);
             rogue.setHp(maxHp + 40);
-            System.out.println(rogue.getHp());
             rogue.setMaxHp(maxHp + 40);
-            System.out.println(rogue.getMaxHp());
 
             inputLoader.displayGoodAngel(this, rogue);
             inputLoader.displayLvlEvolution(rogue);

@@ -26,11 +26,9 @@ public class LifeGiver extends Angel implements Subject, AngelVisitor {
 
             knight.setHp(knight.getHp() + 100);
 
-            // !!!
             if (knight.getHp() > knight.getMaxHp()) {
                 knight.setHp(knight.getMaxHp());
             }
-            // !!!
 
             greatMagician.attachHelpedPlayers(knight);
         }
@@ -45,11 +43,9 @@ public class LifeGiver extends Angel implements Subject, AngelVisitor {
 
             wizard.setHp(wizard.getHp() + 120);
 
-            // !!!
             if (wizard.getHp() > wizard.getMaxHp()) {
                 wizard.setHp(wizard.getMaxHp());
             }
-            // !!!
 
             greatMagician.attachHelpedPlayers(wizard);
         }
@@ -64,11 +60,9 @@ public class LifeGiver extends Angel implements Subject, AngelVisitor {
 
             rogue.setHp(rogue.getHp() + 90);
 
-            // !!!
             if (rogue.getHp() > rogue.getMaxHp()) {
                 rogue.setHp(rogue.getMaxHp());
             }
-            // !!!
 
             greatMagician.attachHelpedPlayers(rogue);
         }
@@ -83,11 +77,9 @@ public class LifeGiver extends Angel implements Subject, AngelVisitor {
 
             pyro.setHp(pyro.getHp() + 80);
 
-            // !!!
             if (pyro.getHp() > pyro.getMaxHp()) {
                 pyro.setHp(pyro.getMaxHp());
             }
-            // !!!
 
             greatMagician.attachHelpedPlayers(pyro);
         }

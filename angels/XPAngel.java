@@ -28,7 +28,7 @@ public class XPAngel extends Angel implements Subject, AngelVisitor {
             int lvl = knight.getLevel();
             knight.setXp(knight.getXp() + 45);
 
-            if ((250 + lvl * 50) <= knight.getXp()) {
+            while ((250 + lvl * 50) <= knight.getXp()) {
                 ++lvl;
                 knight.setLevel(lvl);
                 knight.setHp(Constants.DEFAULT_KNIGHT_HP + knight.getLevel() * Constants.KNIGHT_INCREASE);
@@ -50,7 +50,7 @@ public class XPAngel extends Angel implements Subject, AngelVisitor {
             int lvl = wizard.getLevel();
             wizard.setXp(wizard.getXp() + 60);
 
-            if ((250 + lvl * 50) <= wizard.getXp()) {
+            while ((250 + lvl * 50) <= wizard.getXp()) {
                 ++lvl;
                 wizard.setLevel(lvl);
                 wizard.setHp(Constants.DEFAULT_WIZARD_HP + wizard.getLevel() * Constants.WIZARD_INCREASE);
@@ -72,7 +72,7 @@ public class XPAngel extends Angel implements Subject, AngelVisitor {
             int lvl = rogue.getLevel();
             rogue.setXp(rogue.getXp() + 40);
 
-            if ((250 + lvl * 50) <= rogue.getXp()) {
+            while ((250 + lvl * 50) <= rogue.getXp()) {
                 ++lvl;
                 rogue.setLevel(lvl);
                 rogue.setHp(Constants.DEFAULT_ROGUE_HP + rogue.getLevel() * Constants.ROGUE_INCREASE);
@@ -94,7 +94,7 @@ public class XPAngel extends Angel implements Subject, AngelVisitor {
             int lvl = pyro.getLevel();
             pyro.setXp(pyro.getXp() + 50);
 
-            if ((250 + lvl * 50) <= pyro.getXp()) {
+            while ((250 + lvl * 50) <= pyro.getXp()) {
                 ++lvl;
                 pyro.setLevel(lvl);
                 pyro.setHp(Constants.DEFAULT_PYRO_HP + pyro.getLevel() * Constants.PYRO_INCREASE);

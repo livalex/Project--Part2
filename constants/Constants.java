@@ -43,11 +43,11 @@ public final class Constants {
     public static final float IGNITE_ROGUE_MOD = -0.2f;
     public static final float EXEC_ROGUE_MOD = 0.15f;
     public static final float SLAM_ROGUE_MOD = -0.2f;
-    public static final int BACKSTAB_DEFAULT_DAMAGE = 200;
+    public static final float BACKSTAB_DEFAULT_DAMAGE = 200.0f;
     public static final int BACKSTAB_LVL_INC = 20;
     public static final float CRITICAL_HIT = 1.5f;
     public static final float WOODS_GRD_BONUS = 0.15f;
-    public static final int PARALYSIS_DEFAULT_DAMAGE = 40;
+    public static final float PARALYSIS_DEFAULT_DAMAGE = 39.9f;
     public static final int PARALYSIS_LVL_INC = 10;
     public static final float BACKSTAB_ROGUE_MOD = 0.2f;
     public static final float PARALYSIS_ROGUE_MOD = -0.1f;

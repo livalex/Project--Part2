@@ -68,12 +68,6 @@ public class DamageAngel extends Angel implements Subject, AngelVisitor {
 
             inputLoader.displayGoodAngel(this, rogue);
 
-            System.out.println("Mod 1 rogue of player" + rogue.getPlayerNumber() + " before " + rogue.getRogueBsMod());
-            System.out.println("Mod 2 rogue of player " + rogue.getPlayerNumber() + "before " + rogue.getRogueParMod());
-//            float a = rogue.getRogueBsMod();
-//            System.out.println(a);
-//            a = a + 0.3f;
-//            System.out.println(a);
             rogue.setRogueBsMod(rogue.getRogueBsMod() + 0.3f);
             rogue.setRogueParMod(rogue.getRogueParMod() + 0.3f);
             rogue.setWizardBsMod(rogue.getWizardBsMod() + 0.3f);
@@ -82,10 +76,6 @@ public class DamageAngel extends Angel implements Subject, AngelVisitor {
             rogue.setKnightParMod(rogue.getKnightParMod() + 0.3f);
             rogue.setPyroBsMod(rogue.getPyroBsMod() + 0.3f);
             rogue.setPyroParMod(rogue.getPyroParMod()+ 0.3f);
-
-
-            System.out.println("Mod 1 rogue of player" + rogue.getPlayerNumber() + " after " + rogue.getRogueBsMod());
-            System.out.println("Mod 2 rogue of player " + rogue.getPlayerNumber() + " after " + rogue.getRogueParMod());
 
             greatMagician.attachHelpedPlayers(rogue);
         }

@@ -19,10 +19,8 @@ public final class Main {
         // Instantiations.
         MapBuilder mapBuilder = MapBuilder.getInstance(input.getBattleGround());
         VectorCreator vectorCreator = VectorCreator.getInstance();
-        AngelsVectorCreator angelsVectorCreator = AngelsVectorCreator.getInstance();
         ActionCreator actionCreator = ActionCreator.getInstance();
         PlayersFactory playersFactory = new PlayersFactory();
-        AngelsFactory angelsFactory = new AngelsFactory();
 
         // Build the 'map'.
         ArrayList<String> ground = mapBuilder.getBattleGround();
@@ -33,15 +31,6 @@ public final class Main {
         // Play game.
         players = actionCreator.createMoves(input.getR(), input.getP(),
                 input, players, ground, inputLoader);
-
-        //ArrayList<Angel> angels = angelsVectorCreator.createAngelArray(input.getR(),
-                //angelsFactory, input, inputLoader);
-
-//        for (int i = 0; i < angels.size(); ++i) {
-//            Angel angel = angels.get(i);
-//            System.out.print(angel.getAngelType() + " " + angel.getMyAbscissa() + " " + angel.getMyOrdinate());
-//            System.out.println();
-//        }
 
         // Display the output.
         inputLoader.exposeOutput(players);
