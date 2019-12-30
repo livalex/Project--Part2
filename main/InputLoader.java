@@ -59,46 +59,46 @@ public final class InputLoader {
 
 
         try {
-            FileSystem fileSystem = new FileSystem(getInpPath(), getOutPath());
+            FileSystem fileSys = new FileSystem(getInpPath(), getOutPath());
 
             // Map dimensions
-            n = fileSystem.nextInt();
-            m = fileSystem.nextInt();
+            n = fileSys.nextInt();
+            m = fileSys.nextInt();
 
             // Types of terrain
             for (int j = 0; j < n; ++j) {
-                battleGround.add(fileSystem.nextWord());
+                battleGround.add(fileSys.nextWord());
             }
 
             // Number of players
-            p = fileSystem.nextInt();
+            p = fileSys.nextInt();
 
             // Player's race and coordinates
             for (int j = 0; j < p; ++j) {
-                playerTypes.add(fileSystem.nextWord());
-                firstCoordonates.add(fileSystem.nextInt());
-                secondCoordonates.add(fileSystem.nextInt());
+                playerTypes.add(fileSys.nextWord());
+                firstCoordonates.add(fileSys.nextInt());
+                secondCoordonates.add(fileSys.nextInt());
             }
 
             // Number of rounds
-            r = fileSystem.nextInt();
+            r = fileSys.nextInt();
 
             // The movement of the players on the map
             for (int j = 0; j < r; ++j) {
-                moves.add(fileSystem.nextWord());
+                moves.add(fileSys.nextWord());
             }
 
             // String formed of the angel type and coordinates
             for (int j = 0; j < r; ++j) {
-                numberAngelsRound.add(fileSystem.nextInt());
+                numberAngelsRound.add(fileSys.nextInt());
                 if (numberAngelsRound.get(j) != 0) {
                     for (int z = 0; z < numberAngelsRound.get(j); ++z) {
-                        angelTypes.add(fileSystem.nextWord());
+                        angelTypes.add(fileSys.nextWord());
                     }
                 }
             }
 
-            fileSystem.close();
+            fileSys.close();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -165,38 +165,38 @@ public final class InputLoader {
     }
 
     // Function used to display the angel type
-    public void angelTypeDecider(final Angel angel, final FileSystem fileSystem) {
+    public void angelTypeDecider(final Angel angel, final FileSystem fileSys) {
         try {
             if (angel.getAngelType() == Constants.DAMAGE_ANGEL) {
-                fileSystem.writeWord("DamageAngel");
-                fileSystem.writeCharacter(' ');
+                fileSys.writeWord("DamageAngel");
+                fileSys.writeCharacter(' ');
             } else if (angel.getAngelType() == Constants.DARK_ANGEL) {
-                fileSystem.writeWord("DarkAngel");
-                fileSystem.writeCharacter(' ');
+                fileSys.writeWord("DarkAngel");
+                fileSys.writeCharacter(' ');
             }  else if (angel.getAngelType() == Constants.DRACULA_ANGEL) {
-                fileSystem.writeWord("Dracula");
-                fileSystem.writeCharacter(' ');
+                fileSys.writeWord("Dracula");
+                fileSys.writeCharacter(' ');
             } else if (angel.getAngelType() == Constants.GOOD_BOY_ANGEL) {
-                fileSystem.writeWord("GoodBoy");
-                fileSystem.writeCharacter(' ');
+                fileSys.writeWord("GoodBoy");
+                fileSys.writeCharacter(' ');
             } else if (angel.getAngelType() == Constants.LEVEL_UP_ANGEL) {
-                fileSystem.writeWord("LevelUpAngel");
-                fileSystem.writeCharacter(' ');
+                fileSys.writeWord("LevelUpAngel");
+                fileSys.writeCharacter(' ');
             } else if (angel.getAngelType() == Constants.LIFE_GIVER_ANGEL) {
-                fileSystem.writeWord("LifeGiver");
-                fileSystem.writeCharacter(' ');
+                fileSys.writeWord("LifeGiver");
+                fileSys.writeCharacter(' ');
             } else if (angel.getAngelType() == Constants.SMALL_ANGEL) {
-                fileSystem.writeWord("SmallAngel");
-                fileSystem.writeCharacter(' ');
+                fileSys.writeWord("SmallAngel");
+                fileSys.writeCharacter(' ');
             } else if (angel.getAngelType() == Constants.SPAWNER_ANGEL) {
-                fileSystem.writeWord("Spawner");
-                fileSystem.writeCharacter(' ');
+                fileSys.writeWord("Spawner");
+                fileSys.writeCharacter(' ');
             } else if (angel.getAngelType() == Constants.THE_DOOMER_ANGEL) {
-                fileSystem.writeWord("TheDoomer");
-                fileSystem.writeCharacter(' ');
+                fileSys.writeWord("TheDoomer");
+                fileSys.writeCharacter(' ');
             } else if (angel.getAngelType() == Constants.XP_ANGEL) {
-                fileSystem.writeWord("XPAngel");
-                fileSystem.writeCharacter(' ');
+                fileSys.writeWord("XPAngel");
+                fileSys.writeCharacter(' ');
             }
         } catch (Exception e) {
             e.printStackTrace();

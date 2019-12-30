@@ -360,11 +360,11 @@ public abstract class Human implements Visitor, Visitable, VisitedByAngel {
         this.knightDeflectMod = knightDeflectMod;
     }
 
-    public final static int getTotalNrPlayers() {
+    public static final int getTotalNrPlayers() {
         return totalNrPlayers;
     }
 
-    public final static void setTotalNrPlayers(final int totalNrPlayers) {
+    public static final void setTotalNrPlayers(final int totalNrPlayers) {
         Human.totalNrPlayers = totalNrPlayers;
     }
 
