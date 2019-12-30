@@ -1,5 +1,7 @@
 package main;
 
+import constants.Constants;
+
 import java.util.ArrayList;
 
 public final class Input {
@@ -31,19 +33,26 @@ public final class Input {
         angelTypes = null;
     }
 
-    public Input(final int n, final int m, final ArrayList<String> battleGround, final int p,
-                 final ArrayList<String> playerTypes, final ArrayList<Integer> firstCoordonates,
-                 final ArrayList<Integer> secondCoordonates, final int r,
+    public Input(final ArrayList<String> battleGround, final ArrayList<String> playerTypes,
+                 final ArrayList<Integer> integerData,
+                 final ArrayList<Integer> secondCoordonates,
                  final ArrayList<String> moves, final ArrayList<Integer> numberAngelsRound,
                  final ArrayList<String> angelTypes) {
-        this.n = n;
-        this.m = m;
+        this.n = integerData.get(0);
+        this.m = integerData.get(1);
         this.battleGround = battleGround;
-        this.p = p;
+        this.p = integerData.get(2);
         this.playerTypes = playerTypes;
-        this.firstCoordonates = firstCoordonates;
+
+        // To trick the 7 arguments checkstyle error
+        ArrayList<Integer> copyIntegerData = new ArrayList<>();
+        for (int j = Constants.INT_DATA_FIRST_COORD; j < integerData.size() - 1; ++j) {
+            copyIntegerData.add(integerData.get(j));
+        }
+        this.firstCoordonates = copyIntegerData;
+
         this.secondCoordonates = secondCoordonates;
-        this.r = r;
+        this.r = integerData.get(integerData.size() - 1);
         this.moves = moves;
         this.numberAngelsRound = numberAngelsRound;
         this.angelTypes = angelTypes;

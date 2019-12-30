@@ -375,8 +375,16 @@ public final class ActionCreator {
     }
 
     public ArrayList<Human> createMoves(final int n, final int m, final Input input,
-                                        ArrayList<Human> players, final ArrayList<String> ground,
+                                        final ArrayList<Human> players,
+                                        final ArrayList<String> ground,
                                         final InputLoader inputLoader) {
+
+        ArrayList<Human> playersCopy = new ArrayList<>();
+        for (int j = 0; j < players.size(); ++j) {
+            Human h = players.get(j);
+            playersCopy.add(h);
+        }
+
         // Take every round at a time
         for (int i = 0; i < n; ++i) {
 
@@ -384,7 +392,7 @@ public final class ActionCreator {
             inputLoader.displayRound(i + 1);
 
             // Move the players to the specified location int this round
-            players = checkForMovement(m, players, ground, i, input);
+            playersCopy = checkForMovement(m, players, ground, i, input);
 
             // If a player is paralysed or immobilised he
             // Won't play any strategy
@@ -412,13 +420,13 @@ public final class ActionCreator {
             }
 
             // Players fight if they are in the same location
-            players = battle(n, m, players, inputLoader, angels);
+            playersCopy = battle(n, m, players, inputLoader, angels);
 
             // Check if the players take any effect from the angels
-            angelsEffect(angels, inputLoader, players);
+            angelsEffect(angels, inputLoader, playersCopy);
 
             inputLoader.createSpace();
         }
-        return players;
+        return playersCopy;
     }
 }

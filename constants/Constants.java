@@ -188,4 +188,5 @@ public final class Constants {
     public static final float OFF_WIZARD_MOD = 0.6f;
     public static final int DEF_WIZARD_DIV = 5;
     public static final float DEF_WIZARD_MOD = 0.2f;
+    public static final int INT_DATA_FIRST_COORD = 3;
 }

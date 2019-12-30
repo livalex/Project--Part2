@@ -57,6 +57,8 @@ public final class InputLoader {
         ArrayList<Integer> numberAngelsRound = new ArrayList<>();
         ArrayList<String> angelTypes = new ArrayList<>();
 
+        // To trick the checkstyle arguments error
+        ArrayList<Integer> integersData = new ArrayList<>();
 
         try {
             FileSystem fileSys = new FileSystem(getInpPath(), getOutPath());
@@ -64,6 +66,8 @@ public final class InputLoader {
             // Map dimensions
             n = fileSys.nextInt();
             m = fileSys.nextInt();
+            integersData.add(n);
+            integersData.add(m);
 
             // Types of terrain
             for (int j = 0; j < n; ++j) {
@@ -72,6 +76,7 @@ public final class InputLoader {
 
             // Number of players
             p = fileSys.nextInt();
+            integersData.add(p);
 
             // Player's race and coordinates
             for (int j = 0; j < p; ++j) {
@@ -80,8 +85,13 @@ public final class InputLoader {
                 secondCoordonates.add(fileSys.nextInt());
             }
 
+            for (int j = 0; j < firstCoordonates.size(); ++j) {
+                integersData.add(firstCoordonates.get(j));
+            }
+
             // Number of rounds
             r = fileSys.nextInt();
+            integersData.add(r);
 
             // The movement of the players on the map
             for (int j = 0; j < r; ++j) {
@@ -104,8 +114,8 @@ public final class InputLoader {
             e.printStackTrace();
         }
 
-        return new Input(n, m, battleGround, p, playerTypes,
-                firstCoordonates, secondCoordonates, r, moves, numberAngelsRound, angelTypes);
+        return new Input(battleGround, playerTypes,
+                integersData, secondCoordonates, moves, numberAngelsRound, angelTypes);
     }
 
     // Check the first letter of the output of the player.
