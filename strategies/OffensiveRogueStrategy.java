@@ -1,20 +1,26 @@
 package strategies;
 
+import constants.Constants;
 import main.InputLoader;
 import players.Human;
 
-public class OffensiveRogueStrategy implements GameStrategy {
-    @Override
-    public void play(final Human human, InputLoader inputLoader) {
-        human.setHp(human.getHp() - (human.getHp() / 7));
+public final class OffensiveRogueStrategy implements GameStrategy {
 
-        human.setRogueBsMod(human.getRogueBsMod() + 0.4f);
-        human.setRogueParMod(human.getRogueParMod() + 0.4f);
-        human.setWizardBsMod(human.getWizardBsMod() + 0.4f);
-        human.setWizardParMod(human.getWizardParMod() + 0.4f);
-        human.setKnightBsMod(human.getKnightBsMod() + 0.4f);
-        human.setKnightParMod(human.getKnightParMod() + 0.4f);
-        human.setPyroBsMod(human.getPyroBsMod() + 0.4f);
-        human.setPyroParMod(human.getPyroParMod()+ 0.4f);
+    // Adopt the offensive rogue strategy if it's the case
+    @Override
+    public void play(final Human human, final InputLoader inputLoader) {
+
+        // Update hp
+        human.setHp(human.getHp() - (human.getHp() / Constants.OFF_ROGUE_DIV));
+
+        // Update the player's race modifiers
+        human.setRogueBsMod(human.getRogueBsMod() + Constants.OFF_ROGUE_MOD);
+        human.setRogueParMod(human.getRogueParMod() + Constants.OFF_ROGUE_MOD);
+        human.setWizardBsMod(human.getWizardBsMod() + Constants.OFF_ROGUE_MOD);
+        human.setWizardParMod(human.getWizardParMod() + Constants.OFF_ROGUE_MOD);
+        human.setKnightBsMod(human.getKnightBsMod() + Constants.OFF_ROGUE_MOD);
+        human.setKnightParMod(human.getKnightParMod() + Constants.OFF_ROGUE_MOD);
+        human.setPyroBsMod(human.getPyroBsMod() + Constants.OFF_ROGUE_MOD);
+        human.setPyroParMod(human.getPyroParMod() + Constants.OFF_ROGUE_MOD);
     }
 }

@@ -5,7 +5,7 @@ import angels.VisitedByAngel;
 import constants.Constants;
 import main.InputLoader;
 
-public class Pyromancer extends Human implements Visitable, Visitor, VisitedByAngel {
+public final class Pyromancer extends Human implements Visitable, Visitor, VisitedByAngel {
 
     Pyromancer(final int abscissa, final int ordinate) {
         setPlayerType(Constants.PLAYER_TYPE_ZERO);
@@ -17,38 +17,39 @@ public class Pyromancer extends Human implements Visitable, Visitor, VisitedByAn
         setPlayerNumber(getTotalNrPlayers());
     }
 
+    // Accept the angel visitor
     @Override
-    public void acceptAngel(AngelVisitor angelVisitor, InputLoader inputLoader) {
+    public void acceptAngel(final AngelVisitor angelVisitor, final InputLoader inputLoader) {
         angelVisitor.angelVisit(this, inputLoader);
     }
 
     // Accept he visitor.
     @Override
-    public final void accept(final Visitor visitor) {
+    public void accept(final Visitor visitor) {
         visitor.fight(this);
     }
 
     // Be the visitor.
     @Override
-    public final void fight(final Pyromancer pyromancer) {
+    public void fight(final Pyromancer pyromancer) {
         super.pyroGame(pyromancer, pyromancer.getPyroFbMod(),
                 pyromancer.getPyroIgniteMod(), Constants.VOLCANIC_GRD_BONUS);
     }
 
     @Override
-    public final void fight(final Rogue rogue) {
+    public void fight(final Rogue rogue) {
         super.rogueGame(rogue, rogue.getPyroBsMod(),
                 rogue.getPyroParMod(), Constants.WOODS_GRD_BONUS);
     }
 
     @Override
-    public final void fight(final Knight knight) {
+    public void fight(final Knight knight) {
         super.knightGame(knight, knight.getPyroExecuteMod(),
                 knight.getPyroSlamMod(), Constants.LAND_GRD_BONUS);
     }
 
     @Override
-    public final void fight(final Wizard wizard) {
+    public void fight(final Wizard wizard) {
         super.wizardGame(wizard, wizard.getPyroDrainMod(),
                 wizard.getPyroDeflectMod(), Constants.DESERT_GRD_BONUS);
     }

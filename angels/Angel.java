@@ -1,6 +1,6 @@
 package angels;
 
-import GameAdmin.GreatMagician;
+import admin.GreatMagician;
 import constants.Constants;
 import main.InputLoader;
 import players.Knight;
@@ -9,82 +9,77 @@ import players.Rogue;
 import players.Wizard;
 
 public abstract class Angel implements Subject, AngelVisitor {
+
+    // Data specific to every instance of an angel
     private int myAbscissa = Constants.DEFAULT_ABSCISSA;
     private int myOrdinate = Constants.DEFAULT_ORDINATE;
     private int angelType = Constants.DAMAGE_ANGEL;
+
+    // Instance used to notify the Magician
     private GreatMagician greatMagician = GreatMagician.getInstance();
+
+    // Used in order to display the apparition message only once
     private boolean spawnMessageDisplay = false;
 
-    public boolean isSpawnMessageDisplay() {
+    public final boolean isSpawnMessageDisplay() {
         return spawnMessageDisplay;
     }
 
-    public void setSpawnMessageDisplay(boolean spawnMessageDisplay) {
+    public final void setSpawnMessageDisplay(final boolean spawnMessageDisplay) {
         this.spawnMessageDisplay = spawnMessageDisplay;
     }
 
-    public GreatMagician getGreatMagician() {
+    public final GreatMagician getGreatMagician() {
         return greatMagician;
     }
 
-    public int getMyAbscissa() {
+    public final int getMyAbscissa() {
         return myAbscissa;
     }
 
-    public void setMyAbscissa(int myAbscissa) {
+    public final void setMyAbscissa(final int myAbscissa) {
         this.myAbscissa = myAbscissa;
     }
 
-    public int getMyOrdinate() {
+    public final int getMyOrdinate() {
         return myOrdinate;
     }
 
-    public void setMyOrdinate(int myOrdinate) {
+    public final void setMyOrdinate(final int myOrdinate) {
         this.myOrdinate = myOrdinate;
     }
 
-    public int getAngelType() {
+    public final int getAngelType() {
         return angelType;
     }
 
-    public void setAngelType(int angelType) {
+    public final void setAngelType(final int angelType) {
         this.angelType = angelType;
     }
 
     @Override
-    public void updateAngelAbs(final int x) {
+    public final void updateAngelAbs(final int x) {
         getGreatMagician().attachAbs(x);
     }
 
     @Override
-    public void updateAngelOrd(final int y) {
+    public final void updateAngelOrd(final int y) {
+        greatMagician.attachOrd(y);
     }
 
     @Override
-    public void updateHelpedPlayers() {
+    public void angelVisit(final Knight knight, final InputLoader inputLoader) {
     }
 
     @Override
-    public void updateHitPlayers() {
+    public void angelVisit(final Wizard wizard, final InputLoader inputLoader) {
     }
 
     @Override
-    public void updateKilledPlayers() {
+    public void angelVisit(final Rogue rogue, final InputLoader inputLoader) {
     }
 
     @Override
-    public void angelVisit(Knight knight, InputLoader inputLoader) {
-    }
-
-    @Override
-    public void angelVisit(Wizard wizard, InputLoader inputLoader) {
-    }
-
-    @Override
-    public void angelVisit(Rogue rogue, InputLoader inputLoader) {
-    }
-
-    @Override
-    public void angelVisit(Pyromancer pyromancer, InputLoader inputLoader) {
+    public void angelVisit(final Pyromancer pyromancer, final InputLoader inputLoader) {
     }
 }

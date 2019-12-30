@@ -1,20 +1,26 @@
 package strategies;
 
+import constants.Constants;
 import main.InputLoader;
 import players.Human;
 
-public class DefensiveRogueStrategy implements GameStrategy {
-    @Override
-    public void play(final Human human, InputLoader inputLoader) {
-        human.setHp(human.getHp() + (human.getHp() / 2));
+public final class DefensiveRogueStrategy implements GameStrategy {
 
-        human.setRogueBsMod(human.getRogueBsMod() - 0.1f);
-        human.setRogueParMod(human.getRogueParMod() - 0.1f);
-        human.setWizardBsMod(human.getWizardBsMod() - 0.1f);
-        human.setWizardParMod(human.getWizardParMod() - 0.1f);
-        human.setKnightBsMod(human.getKnightBsMod() - 0.1f);
-        human.setKnightParMod(human.getKnightParMod() - 0.1f);
-        human.setPyroBsMod(human.getPyroBsMod() - 0.1f);
-        human.setPyroParMod(human.getPyroParMod()- 0.1f);
+    // Adopt the defensive rogue strategy if it's the case
+    @Override
+    public void play(final Human human, final InputLoader inputLoader) {
+
+        // Update hp
+        human.setHp(human.getHp() + (human.getHp() / Constants.DEF_ROGUE_DIV));
+
+        // Update the player's race modifiers
+        human.setRogueBsMod(human.getRogueBsMod() - Constants.DEF_ROGUE_MOD);
+        human.setRogueParMod(human.getRogueParMod() - Constants.DEF_ROGUE_MOD);
+        human.setWizardBsMod(human.getWizardBsMod() - Constants.DEF_ROGUE_MOD);
+        human.setWizardParMod(human.getWizardParMod() - Constants.DEF_ROGUE_MOD);
+        human.setKnightBsMod(human.getKnightBsMod() - Constants.DEF_ROGUE_MOD);
+        human.setKnightParMod(human.getKnightParMod() - Constants.DEF_ROGUE_MOD);
+        human.setPyroBsMod(human.getPyroBsMod() - Constants.DEF_ROGUE_MOD);
+        human.setPyroParMod(human.getPyroParMod() - Constants.DEF_ROGUE_MOD);
     }
 }

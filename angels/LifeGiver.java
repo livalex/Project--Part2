@@ -1,6 +1,6 @@
 package angels;
 
-import GameAdmin.GreatMagician;
+import admin.GreatMagician;
 import constants.Constants;
 import main.InputLoader;
 import players.Knight;
@@ -8,7 +8,7 @@ import players.Pyromancer;
 import players.Rogue;
 import players.Wizard;
 
-public class LifeGiver extends Angel implements Subject, AngelVisitor {
+public final class LifeGiver extends Angel implements Subject, AngelVisitor {
     public LifeGiver(final int abscissa, final int ordinate) {
         setMyAbscissa(abscissa);
         setMyOrdinate(ordinate);
@@ -18,30 +18,37 @@ public class LifeGiver extends Angel implements Subject, AngelVisitor {
     }
 
     @Override
-    public void angelVisit(Knight knight, InputLoader inputLoader) {
+    public void angelVisit(final Knight knight, final InputLoader inputLoader) {
         if (!knight.isDead()) {
             GreatMagician greatMagician = GreatMagician.getInstance();
 
+            // Display angel helped player message
             inputLoader.displayGoodAngel(this, knight);
 
-            knight.setHp(knight.getHp() + 100);
+            // Update the HP of the player
+            knight.setHp(knight.getHp() + Constants.LG_ANGEL_KNIGHT_INCREASE);
 
+            // Make sure the health of the player isn't bigger
+            // Than it's maxHp
             if (knight.getHp() > knight.getMaxHp()) {
                 knight.setHp(knight.getMaxHp());
             }
 
+            // Notify the magician
             greatMagician.attachHelpedPlayers(knight);
         }
     }
 
     @Override
-    public void angelVisit(Wizard wizard, InputLoader inputLoader) {
+    public void angelVisit(final Wizard wizard, final InputLoader inputLoader) {
+
+        // Same as above
         if (!wizard.isDead()) {
             GreatMagician greatMagician = GreatMagician.getInstance();
 
             inputLoader.displayGoodAngel(this, wizard);
 
-            wizard.setHp(wizard.getHp() + 120);
+            wizard.setHp(wizard.getHp() + Constants.LG_ANGEL_WIZARD_INCREASE);
 
             if (wizard.getHp() > wizard.getMaxHp()) {
                 wizard.setHp(wizard.getMaxHp());
@@ -52,13 +59,15 @@ public class LifeGiver extends Angel implements Subject, AngelVisitor {
     }
 
     @Override
-    public void angelVisit(Rogue rogue, InputLoader inputLoader) {
+    public void angelVisit(final Rogue rogue, final InputLoader inputLoader) {
+
+        // Same as above
         if (!rogue.isDead()) {
             GreatMagician greatMagician = GreatMagician.getInstance();
 
             inputLoader.displayGoodAngel(this, rogue);
 
-            rogue.setHp(rogue.getHp() + 90);
+            rogue.setHp(rogue.getHp() + Constants.LG_ANGEL_ROGUE_INCREASE);
 
             if (rogue.getHp() > rogue.getMaxHp()) {
                 rogue.setHp(rogue.getMaxHp());
@@ -69,13 +78,15 @@ public class LifeGiver extends Angel implements Subject, AngelVisitor {
     }
 
     @Override
-    public void angelVisit(Pyromancer pyro, InputLoader inputLoader) {
+    public void angelVisit(final Pyromancer pyro, final InputLoader inputLoader) {
+
+        // Same as above
         if (!pyro.isDead()) {
             GreatMagician greatMagician = GreatMagician.getInstance();
 
             inputLoader.displayGoodAngel(this, pyro);
 
-            pyro.setHp(pyro.getHp() + 80);
+            pyro.setHp(pyro.getHp() + Constants.LG_ANGEL_PYRO_INCREASE);
 
             if (pyro.getHp() > pyro.getMaxHp()) {
                 pyro.setHp(pyro.getMaxHp());

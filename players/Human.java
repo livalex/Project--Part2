@@ -72,307 +72,307 @@ public abstract class Human implements Visitor, Visitable, VisitedByAngel {
     private int playerStartRoundXp = Constants.DEFAULT_STARTING_VALUE;
     private boolean killedByDoomer = false;
 
-    public boolean isKilledByDoomer() {
+    public final boolean isKilledByDoomer() {
         return killedByDoomer;
     }
 
-    public void setKilledByDoomer(boolean killedByDoomer) {
+    public final void setKilledByDoomer(final boolean killedByDoomer) {
         this.killedByDoomer = killedByDoomer;
     }
 
-    public int getPlayerStartRoundXp() {
+    public final int getPlayerStartRoundXp() {
         return playerStartRoundXp;
     }
 
-    public void setPlayerStartRoundXp(int playerStartRoundXp) {
+    public final void setPlayerStartRoundXp(final int playerStartRoundXp) {
         this.playerStartRoundXp = playerStartRoundXp;
     }
 
-    public boolean isParalBeforeOvertimeDmg() {
+    public final boolean isParalBeforeOvertimeDmg() {
         return paralBeforeOvertimeDmg;
     }
 
-    public void setParalBeforeOvertimeDmg(boolean paralBeforeOvertimeDmg) {
+    public final void setParalBeforeOvertimeDmg(final boolean paralBeforeOvertimeDmg) {
         this.paralBeforeOvertimeDmg = paralBeforeOvertimeDmg;
     }
 
-    public boolean isImobBeforeOvertimeDmg() {
+    public final boolean isImobBeforeOvertimeDmg() {
         return imobBeforeOvertimeDmg;
     }
 
-    public void setImobBeforeOvertimeDmg(boolean imobBeforeOvertimeDmg) {
+    public final void setImobBeforeOvertimeDmg(final boolean imobBeforeOvertimeDmg) {
         this.imobBeforeOvertimeDmg = imobBeforeOvertimeDmg;
     }
 
-    public float getWizardExecuteMod() {
+    public final float getWizardExecuteMod() {
         return wizardExecuteMod;
     }
 
-    public void setWizardExecuteMod(float wizardExecuteMod) {
+    public final void setWizardExecuteMod(final float wizardExecuteMod) {
         this.wizardExecuteMod = wizardExecuteMod;
     }
 
-    public float getWizardSlamMod() {
+    public final float getWizardSlamMod() {
         return wizardSlamMod;
     }
 
-    public void setWizardSlamMod(float wizardSlamMod) {
+    public final void setWizardSlamMod(final float wizardSlamMod) {
         this.wizardSlamMod = wizardSlamMod;
     }
 
-    public float getWizardFbMod() {
+    public final float getWizardFbMod() {
         return wizardFbMod;
     }
 
-    public void setWizardFbMod(float wizardFbMod) {
+    public final void setWizardFbMod(final float wizardFbMod) {
         this.wizardFbMod = wizardFbMod;
     }
 
-    public float getWizardIgniteMod() {
+    public final float getWizardIgniteMod() {
         return wizardIgniteMod;
     }
 
-    public void setWizardIgniteMod(float wizardIgniteMod) {
+    public final void setWizardIgniteMod(final float wizardIgniteMod) {
         this.wizardIgniteMod = wizardIgniteMod;
     }
 
-    public float getWizardBsMod() {
+    public final float getWizardBsMod() {
         return wizardBsMod;
     }
 
-    public void setWizardBsMod(float wizardBsMod) {
+    public final void setWizardBsMod(final float wizardBsMod) {
         this.wizardBsMod = wizardBsMod;
     }
 
-    public float getWizardParMod() {
+    public final float getWizardParMod() {
         return wizardParMod;
     }
 
-    public void setWizardParMod(float wizardParod) {
+    public final void setWizardParMod(final float wizardParod) {
         this.wizardParMod = wizardParod;
     }
 
-    public float getWizardDrainMod() {
+    public final float getWizardDrainMod() {
         return wizardDrainMod;
     }
 
-    public void setWizardDrainMod(float wizardDrainMod) {
+    public final void setWizardDrainMod(final float wizardDrainMod) {
         this.wizardDrainMod = wizardDrainMod;
     }
 
-    public float getWizardDeflectMod() {
+    public final float getWizardDeflectMod() {
         return wizardDeflectMod;
     }
 
-    public void setWizardDeflectMod(float wizardDeflectMod) {
+    public final void setWizardDeflectMod(final float wizardDeflectMod) {
         this.wizardDeflectMod = wizardDeflectMod;
     }
 
-    public float getRogueExecuteMod() {
+    public final float getRogueExecuteMod() {
         return rogueExecuteMod;
     }
 
-    public void setRogueExecuteMod(float rogueExecuteMod) {
+    public final void setRogueExecuteMod(final float rogueExecuteMod) {
         this.rogueExecuteMod = rogueExecuteMod;
     }
 
-    public float getRogueSlamMod() {
+    public final float getRogueSlamMod() {
         return rogueSlamMod;
     }
 
-    public void setRogueSlamMod(float rogueSlamMod) {
+    public final void setRogueSlamMod(final float rogueSlamMod) {
         this.rogueSlamMod = rogueSlamMod;
     }
 
-    public float getRogueFbMod() {
+    public final float getRogueFbMod() {
         return rogueFbMod;
     }
 
-    public void setRogueFbMod(float rogueFbMod) {
+    public final void setRogueFbMod(final float rogueFbMod) {
         this.rogueFbMod = rogueFbMod;
     }
 
-    public float getRogueIgniteMod() {
+    public final float getRogueIgniteMod() {
         return rogueIgniteMod;
     }
 
-    public void setRogueIgniteMod(float rogueIgniteMod) {
+    public final void setRogueIgniteMod(final float rogueIgniteMod) {
         this.rogueIgniteMod = rogueIgniteMod;
     }
 
-    public float getRogueBsMod() {
+    public final float getRogueBsMod() {
         return rogueBsMod;
     }
 
-    public void setRogueBsMod(float rogueBsMod) {
+    public final void setRogueBsMod(final float rogueBsMod) {
         this.rogueBsMod = rogueBsMod;
     }
 
-    public float getRogueParMod() {
+    public final float getRogueParMod() {
         return rogueParMod;
     }
 
-    public void setRogueParMod(float rogueParMod) {
+    public final void setRogueParMod(final float rogueParMod) {
         this.rogueParMod = rogueParMod;
     }
 
-    public float getRogueDrainMod() {
+    public final float getRogueDrainMod() {
         return rogueDrainMod;
     }
 
-    public void setRogueDrainMod(float rogueDrainMod) {
+    public final void setRogueDrainMod(final float rogueDrainMod) {
         this.rogueDrainMod = rogueDrainMod;
     }
 
-    public float getRogueDeflectMod() {
+    public final float getRogueDeflectMod() {
         return rogueDeflectMod;
     }
 
-    public void setRogueDeflectMod(float rogueDeflectMod) {
+    public final void setRogueDeflectMod(final float rogueDeflectMod) {
         this.rogueDeflectMod = rogueDeflectMod;
     }
 
-    public float getPyroExecuteMod() {
+    public final float getPyroExecuteMod() {
         return pyroExecuteMod;
     }
 
-    public void setPyroExecuteMod(float pyroExecuteMod) {
+    public final void setPyroExecuteMod(final float pyroExecuteMod) {
         this.pyroExecuteMod = pyroExecuteMod;
     }
 
-    public float getPyroSlamMod() {
+    public final float getPyroSlamMod() {
         return pyroSlamMod;
     }
 
-    public void setPyroSlamMod(float pyroSlamMod) {
+    public final void setPyroSlamMod(final float pyroSlamMod) {
         this.pyroSlamMod = pyroSlamMod;
     }
 
-    public float getPyroFbMod() {
+    public final float getPyroFbMod() {
         return pyroFbMod;
     }
 
-    public void setPyroFbMod(float pyroFbMod) {
+    public final void setPyroFbMod(final float pyroFbMod) {
         this.pyroFbMod = pyroFbMod;
     }
 
-    public float getPyroIgniteMod() {
+    public final float getPyroIgniteMod() {
         return pyroIgniteMod;
     }
 
-    public void setPyroIgniteMod(float pyroIgniteMod) {
+    public final void setPyroIgniteMod(final float pyroIgniteMod) {
         this.pyroIgniteMod = pyroIgniteMod;
     }
 
-    public float getPyroBsMod() {
+    public final float getPyroBsMod() {
         return pyroBsMod;
     }
 
-    public void setPyroBsMod(float pyroBsMod) {
+    public final void setPyroBsMod(final float pyroBsMod) {
         this.pyroBsMod = pyroBsMod;
     }
 
-    public float getPyroParMod() {
+    public final float getPyroParMod() {
         return pyroParMod;
     }
 
-    public void setPyroParMod(float pyroParMod) {
+    public final void setPyroParMod(final float pyroParMod) {
         this.pyroParMod = pyroParMod;
     }
 
-    public float getPyroDrainMod() {
+    public final float getPyroDrainMod() {
         return pyroDrainMod;
     }
 
-    public void setPyroDrainMod(float pyroDrainMod) {
+    public final void setPyroDrainMod(final float pyroDrainMod) {
         this.pyroDrainMod = pyroDrainMod;
     }
 
-    public float getPyroDeflectMod() {
+    public final float getPyroDeflectMod() {
         return pyroDeflectMod;
     }
 
-    public void setPyroDeflectMod(float pyroDeflectMod) {
+    public final void setPyroDeflectMod(final float pyroDeflectMod) {
         this.pyroDeflectMod = pyroDeflectMod;
     }
 
-    public float getKnightExecuteMod() {
+    public final float getKnightExecuteMod() {
         return knightExecuteMod;
     }
 
-    public void setKnightExecuteMod(float knightExecuteMod) {
+    public final void setKnightExecuteMod(final float knightExecuteMod) {
         this.knightExecuteMod = knightExecuteMod;
     }
 
-    public float getKnightSlamMod() {
+    public final float getKnightSlamMod() {
         return knightSlamMod;
     }
 
-    public void setKnightSlamMod(float knightSlamMod) {
+    public final void setKnightSlamMod(final float knightSlamMod) {
         this.knightSlamMod = knightSlamMod;
     }
 
-    public float getKnightFbMod() {
+    public final float getKnightFbMod() {
         return knightFbMod;
     }
 
-    public void setKnightFbMod(float knightFbMod) {
+    public final void setKnightFbMod(final float knightFbMod) {
         this.knightFbMod = knightFbMod;
     }
 
-    public float getKnightIgniteMod() {
+    public final float getKnightIgniteMod() {
         return knightIgniteMod;
     }
 
-    public void setKnightIgniteMod(float knightIgniteMod) {
+    public final void setKnightIgniteMod(final float knightIgniteMod) {
         this.knightIgniteMod = knightIgniteMod;
     }
 
-    public float getKnightBsMod() {
+    public final float getKnightBsMod() {
         return knightBsMod;
     }
 
-    public void setKnightBsMod(float knightBsMod) {
+    public final void setKnightBsMod(final float knightBsMod) {
         this.knightBsMod = knightBsMod;
     }
 
-    public float getKnightParMod() {
+    public final float getKnightParMod() {
         return knightParMod;
     }
 
-    public void setKnightParMod(float knightParMod) {
+    public final void setKnightParMod(final float knightParMod) {
         this.knightParMod = knightParMod;
     }
 
-    public float getKnightDrainMod() {
+    public final float getKnightDrainMod() {
         return knightDrainMod;
     }
 
-    public void setKnightDrainMod(float knightDrainMod) {
+    public final void setKnightDrainMod(final float knightDrainMod) {
         this.knightDrainMod = knightDrainMod;
     }
 
-    public float getKnightDeflectMod() {
+    public final float getKnightDeflectMod() {
         return knightDeflectMod;
     }
 
-    public void setKnightDeflectMod(float knightDeflectMod) {
+    public final void setKnightDeflectMod(final float knightDeflectMod) {
         this.knightDeflectMod = knightDeflectMod;
     }
 
-    public static int getTotalNrPlayers() {
+    public final static int getTotalNrPlayers() {
         return totalNrPlayers;
     }
 
-    public static void setTotalNrPlayers(int totalNrPlayers) {
+    public final static void setTotalNrPlayers(final int totalNrPlayers) {
         Human.totalNrPlayers = totalNrPlayers;
     }
 
-    public int getPlayerNumber() {
+    public final int getPlayerNumber() {
         return playerNumber;
     }
 
-    public void setPlayerNumber(int playerNumber) {
+    public final void setPlayerNumber(final int playerNumber) {
         this.playerNumber = playerNumber;
     }
 
@@ -596,8 +596,8 @@ public abstract class Human implements Visitor, Visitable, VisitedByAngel {
 
     public abstract void fight(Wizard wizard);
 
-    public void playThisStrategy(final GameStrategy gameStrategy, final Human human,
-                                 InputLoader inputLoader) {
+    public final void playThisStrategy(final GameStrategy gameStrategy, final Human human,
+                                final InputLoader inputLoader) {
         gameStrategy.play(human, inputLoader);
     }
 

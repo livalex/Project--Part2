@@ -11,7 +11,24 @@ public final class InputLoader {
     private static InputLoader inputLoader = null;
 
     private final String inpPath, outPath;
-    FileSystem fileSystem;
+
+    public String getInpPath() {
+        return inpPath;
+    }
+
+    public String getOutPath() {
+        return outPath;
+    }
+
+    public FileSystem getFileSystem() {
+        return fileSystem;
+    }
+
+    public void setFileSystem(final FileSystem fileSystem) {
+        this.fileSystem = fileSystem;
+    }
+
+    private FileSystem fileSystem;
 
     private InputLoader(final String inpPath, final String outPath) {
         this.inpPath = inpPath;
@@ -42,29 +59,36 @@ public final class InputLoader {
 
 
         try {
-            FileSystem fileSystem = new FileSystem(inpPath, outPath);
+            FileSystem fileSystem = new FileSystem(getInpPath(), getOutPath());
 
+            // Map dimensions
             n = fileSystem.nextInt();
             m = fileSystem.nextInt();
 
+            // Types of terrain
             for (int j = 0; j < n; ++j) {
                 battleGround.add(fileSystem.nextWord());
             }
 
+            // Number of players
             p = fileSystem.nextInt();
 
+            // Player's race and coordinates
             for (int j = 0; j < p; ++j) {
                 playerTypes.add(fileSystem.nextWord());
                 firstCoordonates.add(fileSystem.nextInt());
                 secondCoordonates.add(fileSystem.nextInt());
             }
 
+            // Number of rounds
             r = fileSystem.nextInt();
 
+            // The movement of the players on the map
             for (int j = 0; j < r; ++j) {
                 moves.add(fileSystem.nextWord());
             }
 
+            // String formed of the angel type and coordinates
             for (int j = 0; j < r; ++j) {
                 numberAngelsRound.add(fileSystem.nextInt());
                 if (numberAngelsRound.get(j) != 0) {
@@ -81,7 +105,7 @@ public final class InputLoader {
         }
 
         return new Input(n, m, battleGround, p, playerTypes,
-                firstCoordonates, secondCoordonates, r, moves, numberAngelsRound , angelTypes);
+                firstCoordonates, secondCoordonates, r, moves, numberAngelsRound, angelTypes);
     }
 
     // Check the first letter of the output of the player.
@@ -102,11 +126,9 @@ public final class InputLoader {
         }
     }
 
-    // Used to display if the file.
+    // Used to display in the file.
     public void exposeOutput(final ArrayList<Human> players) {
         try {
-            // FileSystem fileSystem = new FileSystem(inpPath, outPath);
-
             int j, size = players.size();
             fileSystem.writeWord("~~");
             fileSystem.writeCharacter(' ');
@@ -142,6 +164,7 @@ public final class InputLoader {
         }
     }
 
+    // Function used to display the angel type
     public void angelTypeDecider(final Angel angel, final FileSystem fileSystem) {
         try {
             if (angel.getAngelType() == Constants.DAMAGE_ANGEL) {
@@ -180,6 +203,7 @@ public final class InputLoader {
         }
     }
 
+    // Function used to signal the apparition of an angel
     public void displayAngel(final Angel angel) {
         try {
             fileSystem.writeWord("Angel");
@@ -200,6 +224,7 @@ public final class InputLoader {
         }
     }
 
+    // Display current round
     public void displayRound(final int roundNumber) {
         try {
             fileSystem.writeWord("~~");
@@ -215,6 +240,7 @@ public final class InputLoader {
         }
     }
 
+    // Function used to display the race of a player
     public void humanTypeDecider(final Human player) {
         try {
             if (player.getPlayerType() == Constants.PLAYER_TYPE_ZERO) {
@@ -232,6 +258,7 @@ public final class InputLoader {
         }
     }
 
+    // Display a message if a player was killed by an angel
     public void deathByAngel(final Human human) {
         try {
             fileSystem.writeWord("Player");
@@ -254,6 +281,7 @@ public final class InputLoader {
         }
     }
 
+    // Display a message if an angel hit a player
     public void displayBadAngel(final Angel angel, final Human human) {
         try {
             angelTypeDecider(angel, fileSystem);
@@ -267,6 +295,7 @@ public final class InputLoader {
         }
     }
 
+    // Display a message if an angel helped a player
     public void displayGoodAngel(final Angel angel, final Human human) {
         try {
             angelTypeDecider(angel, fileSystem);
@@ -280,6 +309,7 @@ public final class InputLoader {
         }
     }
 
+    // Display a message if an angel reached a higher level
     public void displayLvlEvolution(final Human human) {
         try {
             humanTypeDecider(human);
@@ -296,6 +326,8 @@ public final class InputLoader {
         }
     }
 
+    // Display a message if a player was brought to life
+    // By an angel
     public void bringToLife(final Human human) {
         try {
             fileSystem.writeWord("Player");
@@ -322,6 +354,7 @@ public final class InputLoader {
         }
     }
 
+    // Display a message if a player was killed by other player
     public void declareDeath(final Human human2, final Human human1) {
         try {
             fileSystem.writeWord("Player");
@@ -343,6 +376,7 @@ public final class InputLoader {
         }
     }
 
+    // Print space after every round
     public void createSpace() {
         try {
             fileSystem.writeNewLine();

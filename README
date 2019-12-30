@@ -21,16 +21,16 @@
 		 _.-'       |      BBb       '-.  '-. 
 		(________mrf\____.dBBBb.________)____)
 
-			PROJECT-FIRST STAGE
+			PROJECT-SECOND STAGE
 
 					Name: Livadaru Alexandru-Valentin
 					Group: 323CA
 
-			CONSTANS PACKAGE
-
-		CONSTANTS
+			CONSTANTS
 
 - All the constants used in the program.
+
+
 
 			MAIN
 	
@@ -38,8 +38,8 @@
 
 - Both help me to read from the file and write in the file.
 - For the read and write operations I inspired from the skeleton of the
-	previous homework and also from the tutorial given in the
-	homework text.
+	first homework and also from the tutorial given in the
+	previous stage of the homework text.
 
 		MAPBUILDER
 
@@ -51,32 +51,87 @@
 - Takes the player type and it's coordinates from the input and creates
 	a player of a certain strategy that is added in the 'players' vector.
 
+		MAIN
+
+- Class used to create the map and the array of players using the input.
+- It calls the "createMoves" method from ActionCreator that "plays" the game
+- In the end it exposes the output.
+
+
 		ACTIONCREATOR
+
+- Made this class singleton because we need it only once 
 
 	CREATEMOVES
 
-- In each round, it takes all the players to the input specified loation
-	unless the player does not have the immobility or paralysed effect.
+- Takes every round at a time and it checks for the movement of the player
+- Checks if a player is paralysed or immobilised and if it is, it won't play
+	any strategy
+- Calculate the consequences of the overtime damage of the players
+- Checks if a player uses any strategy by calculating the player's hp
+- Checks if the players are affected by any angels
 
-- Check every player's overtime ability (see OVERTIMEABILITY below)
+	ANGELSEFFECT
 
+- Takes every angel then takes every players and compares their position
+- If they are in the same position the player takes the effect given by the
+	angel
+- Sets the killed by Doomer flag to false for evey player
+- If a player is killed by doomer, it won't have is xp set to the one
+	at the beginning of the round
+	
+	ANGELSVECTORCREATOR
 
-	GROUNDSETTER
+- Takes the input and gets the coodinates and the type of player from it
+- It adds the instance of the angel created in the angels array
 
-- Sets the play ground of every player
+	CHECKFORMOVEMENT
 
-	XPGIVER
+- Sets the new position of the player
 
-- Sets the player's current xp using the homework formula then calculates
-	the level of the player based on it's hp and updates the hp level.
 
 	BATTLE
 
-- Checks if there are two players in the same position.
-- If there are, check for them not to be dead.
-- If they are not, always make sure that the wizard atacks second so he can
-	use it's deflect ability.
-- After the battle, update their stats.
+- Takes every pair of players (if a player is a wizard he will strike first)
+- Takes the xp from the beginning of the round (for Spawner angel)
+- Checks if they are in the same position and if they are not then simulates
+	the battle
+- Gives the xp to the winning player
+- If both players die, they don't receive xp
+
+	CHOOSESTRATEGY
+
+- Calculates the hp of every player and adopts a strategy if it's the case
+
+	XPGIVER
+
+- Gives the xp to the winning player then calculates the level
+- It sets the right hp and maxhp
+
+	GROUNDSETTER
+
+- Sets the right type of ground according to the player's coordinates
+		
+
+
+
+			STRATEGIES
+
+- This package contains the implementation of the two strategies adopted
+	by every player.
+
+
+		~ STRATEGY PATTERN ~
+
+- In the chooseStrategy method from ActionCreator we take every player and
+	if the hp is right, he chooses a style of play.
+- The method is decided at run time, depending of th type of player and
+	its hp.
+- GameStrategy interface is implemented by the defensive and offensive
+	strategies of every player.
+
+
+
 
 			PLAYERS
 
@@ -144,12 +199,46 @@
 
 - The DOUBLE DISPATCH concept is used here.
 
-- The player is the 'visitable' BUT also the 'visitator' .
+- The player is the 'visitable' BUT also the 'visitor' .
 
 - The methods of the players have all the same name but the program knows
 	which method to call using the argument (visitator) and the class
 	in which is called (visitable).
 
-	NOTE: 
-- Thanks for reading my README. 
-- I hope everthing is clear and I wish you a good day!
+			
+
+
+			ANGELS
+
+- This package contains the implementation of every angel as described
+	in the homework text.
+- Angel is the "mother" class of all the angels and stores general data
+	like coordinates and angel type.
+
+		~ VISITOR PATTERN ~
+
+- The angels are the visitors and the players are the visitables.
+- The methods of the players (acceptAngel) have all the same name but the program knows
+	which method to call using the argument (visitator) and the class
+	in which is called (visitable).
+
+		~ OBSERVER PATTERN ~
+
+- I've changed a bit the pattern so that it suits this program.
+- It is a relation of one observer to n subjects.
+	
+
+			ADMIN		
+
+		GREATMAGICIAN		
+
+- The Great Magician plays the role of the observer and has fields
+	for every angel born, every player hit or helped, and every
+	player killed or brought to life.
+- The subjects are the angels.
+- Every time an angel is created they notify the Great Magician with
+	their position.
+- Also, when a player suffers an effect from an angel, the magician
+	is also notified.
+
+

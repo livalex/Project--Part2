@@ -1,7 +1,5 @@
 package main;
 
-import angels.Angel;
-import angels.AngelsFactory;
 import players.Human;
 import players.PlayersFactory;
 
@@ -12,7 +10,7 @@ public final class Main {
     }
 
     public static void main(final String[] args) {
-        // Objects used read and write data.
+        // Objects used to read and write data.
         InputLoader inputLoader = InputLoader.getInstance(args[0], args[1]);
         Input input = inputLoader.load();
 
@@ -20,7 +18,7 @@ public final class Main {
         MapBuilder mapBuilder = MapBuilder.getInstance(input.getBattleGround());
         VectorCreator vectorCreator = VectorCreator.getInstance();
         ActionCreator actionCreator = ActionCreator.getInstance();
-        PlayersFactory playersFactory = new PlayersFactory();
+        PlayersFactory playersFactory = PlayersFactory.getInstance();
 
         // Build the 'map'.
         ArrayList<String> ground = mapBuilder.getBattleGround();

@@ -1,6 +1,6 @@
 package angels;
 
-import GameAdmin.GreatMagician;
+import admin.GreatMagician;
 import constants.Constants;
 import main.InputLoader;
 import players.Knight;
@@ -8,7 +8,7 @@ import players.Pyromancer;
 import players.Rogue;
 import players.Wizard;
 
-public class LevelUpAngel extends Angel implements Subject, AngelVisitor {
+public final class LevelUpAngel extends Angel implements Subject, AngelVisitor {
 
     public LevelUpAngel(final int abscissa, final int ordinate) {
         setMyAbscissa(abscissa);
@@ -19,122 +19,143 @@ public class LevelUpAngel extends Angel implements Subject, AngelVisitor {
     }
 
     @Override
-    public void angelVisit(Knight knight, InputLoader inputLoader) {
+    public void angelVisit(final Knight knight, final InputLoader inputLoader) {
         if (!knight.isDead()) {
             GreatMagician greatMagician = GreatMagician.getInstance();
 
+            // Update the player's level according to his XP
             int level = knight.getLevel();
-            knight.setXp(250 + level * 50);
+            knight.setXp(Constants.XP_FORMULA_FIRST_FACTOR
+                    + level * Constants.XP_FORMULA_SECOND_FACTOR);
             ++level;
             knight.setLevel(level);
 
+            // Update the player's HP according to his level
             int maxHp = knight.getMaxHp();
-            knight.setHp(maxHp + 80);
-            knight.setMaxHp(maxHp + 80);
+            knight.setHp(maxHp + Constants.LV_ANGEL_KNIGHT_INCREASE);
+            knight.setMaxHp(maxHp + Constants.LV_ANGEL_KNIGHT_INCREASE);
 
+            // Display player was helped by an angel message
             inputLoader.displayGoodAngel(this, knight);
+
+            // Display level evolution
             inputLoader.displayLvlEvolution(knight);
 
-            knight.setWizardExecuteMod(knight.getWizardExecuteMod() + 0.1f);
-            knight.setWizardSlamMod(knight.getWizardSlamMod() + 0.1f);
-            knight.setRogueExecuteMod(knight.getRogueExecuteMod() + 0.1f);
-            knight.setRogueSlamMod(knight.getRogueSlamMod() + 0.1f);
-            if (knight.getKnightExecuteMod() != 0.0f) {
-                knight.setKnightExecuteMod(knight.getKnightExecuteMod() + 0.1f);
+            // Update the race modifiers of the player
+            knight.setWizardExecuteMod(knight.getWizardExecuteMod()
+                    + Constants.LV_ANGEL_KNIGHT_MOD);
+            knight.setWizardSlamMod(knight.getWizardSlamMod() + Constants.LV_ANGEL_KNIGHT_MOD);
+            knight.setRogueExecuteMod(knight.getRogueExecuteMod() + Constants.LV_ANGEL_KNIGHT_MOD);
+            knight.setRogueSlamMod(knight.getRogueSlamMod() + Constants.LV_ANGEL_KNIGHT_MOD);
+            if (knight.getKnightExecuteMod() != Constants.UNCHANGEABLE_VALUE) {
+                knight.setKnightExecuteMod(knight.getKnightExecuteMod()
+                        + Constants.LV_ANGEL_KNIGHT_MOD);
             }
-            knight.setKnightSlamMod(knight.getKnightSlamMod() + 0.1f);
-            knight.setPyroExecuteMod(knight.getPyroExecuteMod() + 0.1f);
-            knight.setPyroSlamMod(knight.getPyroSlamMod() + 0.1f);
+            knight.setKnightSlamMod(knight.getKnightSlamMod() + Constants.LV_ANGEL_KNIGHT_MOD);
+            knight.setPyroExecuteMod(knight.getPyroExecuteMod() + Constants.LV_ANGEL_KNIGHT_MOD);
+            knight.setPyroSlamMod(knight.getPyroSlamMod() + Constants.LV_ANGEL_KNIGHT_MOD);
 
+            // Notify the magician
             greatMagician.attachHelpedPlayers(knight);
         }
     }
 
     @Override
-    public void angelVisit(Wizard wizard, InputLoader inputLoader) {
+    public void angelVisit(final Wizard wizard, final InputLoader inputLoader) {
+
+        // Same as above
         if (!wizard.isDead()) {
             GreatMagician greatMagician = GreatMagician.getInstance();
 
             int level = wizard.getLevel();
-            wizard.setXp(250 + level * 50);
+            wizard.setXp(Constants.XP_FORMULA_FIRST_FACTOR
+                    + level * Constants.XP_FORMULA_SECOND_FACTOR);
             ++level;
             wizard.setLevel(level);
 
             int maxHp = wizard.getMaxHp();
-            wizard.setHp(maxHp + 30);
-            wizard.setMaxHp(maxHp + 30);
+            wizard.setHp(maxHp + Constants.LV_ANGEL_WIZARD_INCREASE);
+            wizard.setMaxHp(maxHp + Constants.LV_ANGEL_WIZARD_INCREASE);
 
             inputLoader.displayGoodAngel(this, wizard);
             inputLoader.displayLvlEvolution(wizard);
 
-            wizard.setRogueDrainMod(wizard.getRogueDrainMod() + 0.25f);
-            wizard.setRogueDeflectMod(wizard.getRogueDeflectMod() + 0.25f);
-            wizard.setWizardDrainMod(wizard.getWizardDrainMod() + 0.25f);
-            wizard.setWizardDeflectMod(wizard.getWizardDeflectMod() + 0.25f);
-            wizard.setPyroDrainMod(wizard.getPyroDrainMod() + 0.25f);
-            wizard.setPyroDeflectMod(wizard.getPyroDeflectMod() + 0.25f);
-            wizard.setKnightDrainMod(wizard.getKnightDrainMod() + 0.25f);
-            wizard.setKnightDeflectMod(wizard.getKnightDeflectMod()+ 0.25f);
+            wizard.setRogueDrainMod(wizard.getRogueDrainMod() + Constants.LV_ANGEL_WIZARD_MOD);
+            wizard.setRogueDeflectMod(wizard.getRogueDeflectMod() + Constants.LV_ANGEL_WIZARD_MOD);
+            wizard.setWizardDrainMod(wizard.getWizardDrainMod() + Constants.LV_ANGEL_WIZARD_MOD);
+            wizard.setWizardDeflectMod(wizard.getWizardDeflectMod()
+                    + Constants.LV_ANGEL_WIZARD_MOD);
+            wizard.setPyroDrainMod(wizard.getPyroDrainMod() + Constants.LV_ANGEL_WIZARD_MOD);
+            wizard.setPyroDeflectMod(wizard.getPyroDeflectMod() + Constants.LV_ANGEL_WIZARD_MOD);
+            wizard.setKnightDrainMod(wizard.getKnightDrainMod() + Constants.LV_ANGEL_WIZARD_MOD);
+            wizard.setKnightDeflectMod(wizard.getKnightDeflectMod()
+                    + Constants.LV_ANGEL_WIZARD_MOD);
 
             greatMagician.attachHelpedPlayers(wizard);
         }
     }
 
     @Override
-    public void angelVisit(Rogue rogue, InputLoader inputLoader) {
+    public void angelVisit(final Rogue rogue, final InputLoader inputLoader) {
+
+        // Same as above
         if (!rogue.isDead()) {
             GreatMagician greatMagician = GreatMagician.getInstance();
 
             int level = rogue.getLevel();
-            rogue.setXp(250 + level * 50);
+            rogue.setXp(Constants.XP_FORMULA_FIRST_FACTOR
+                    + level * Constants.XP_FORMULA_SECOND_FACTOR);
             ++level;
             rogue.setLevel(level);
 
             int maxHp = rogue.getMaxHp();
-            rogue.setHp(maxHp + 40);
-            rogue.setMaxHp(maxHp + 40);
+            rogue.setHp(maxHp + Constants.LV_ANGEL_ROGUE_INCREASE);
+            rogue.setMaxHp(maxHp + Constants.LV_ANGEL_ROGUE_INCREASE);
 
             inputLoader.displayGoodAngel(this, rogue);
             inputLoader.displayLvlEvolution(rogue);
 
-            rogue.setRogueBsMod(rogue.getRogueBsMod() + 0.15f);
-            rogue.setRogueParMod(rogue.getRogueParMod() + 0.15f);
-            rogue.setWizardBsMod(rogue.getWizardBsMod() + 0.15f);
-            rogue.setWizardParMod(rogue.getWizardParMod() + 0.15f);
-            rogue.setKnightBsMod(rogue.getKnightBsMod() + 0.15f);
-            rogue.setKnightParMod(rogue.getKnightParMod() + 0.15f);
-            rogue.setPyroBsMod(rogue.getPyroBsMod() + 0.15f);
-            rogue.setPyroParMod(rogue.getPyroParMod()+ 0.15f);
+            rogue.setRogueBsMod(rogue.getRogueBsMod() + Constants.LV_ANGEL_ROGUE_MOD);
+            rogue.setRogueParMod(rogue.getRogueParMod() + Constants.LV_ANGEL_ROGUE_MOD);
+            rogue.setWizardBsMod(rogue.getWizardBsMod() + Constants.LV_ANGEL_ROGUE_MOD);
+            rogue.setWizardParMod(rogue.getWizardParMod() + Constants.LV_ANGEL_ROGUE_MOD);
+            rogue.setKnightBsMod(rogue.getKnightBsMod() + Constants.LV_ANGEL_ROGUE_MOD);
+            rogue.setKnightParMod(rogue.getKnightParMod() + Constants.LV_ANGEL_ROGUE_MOD);
+            rogue.setPyroBsMod(rogue.getPyroBsMod() + Constants.LV_ANGEL_ROGUE_MOD);
+            rogue.setPyroParMod(rogue.getPyroParMod() + Constants.LV_ANGEL_ROGUE_MOD);
 
             greatMagician.attachHelpedPlayers(rogue);
         }
     }
 
     @Override
-    public void angelVisit(Pyromancer pyro, InputLoader inputLoader) {
+    public void angelVisit(final Pyromancer pyro, final InputLoader inputLoader) {
+
+        // Same as above
         if (!pyro.isDead()) {
             GreatMagician greatMagician = GreatMagician.getInstance();
 
             int level = pyro.getLevel();
-            pyro.setXp(250 + level * 50);
+            pyro.setXp(Constants.XP_FORMULA_FIRST_FACTOR
+                    + level * Constants.XP_FORMULA_SECOND_FACTOR);
             ++level;
             pyro.setLevel(level);
 
             int maxHp = pyro.getMaxHp();
-            pyro.setHp(maxHp + 50);
-            pyro.setMaxHp(maxHp + 50);
+            pyro.setHp(maxHp + Constants.LV_ANGEL_PYRO_INCREASE);
+            pyro.setMaxHp(maxHp + Constants.LV_ANGEL_PYRO_INCREASE);
 
             inputLoader.displayGoodAngel(this, pyro);
             inputLoader.displayLvlEvolution(pyro);
 
-            pyro.setWizardFbMod(pyro.getPyroFbMod() + 0.2f);
-            pyro.setWizardIgniteMod(pyro.getPyroIgniteMod() + 0.2f);
-            pyro.setKnightFbMod(pyro.getPyroFbMod() + 0.2f);
-            pyro.setKnightIgniteMod(pyro.getPyroIgniteMod() + 0.2f);
-            pyro.setRogueFbMod(pyro.getRogueFbMod() + 0.2f);
-            pyro.setRogueIgniteMod(pyro.getRogueIgniteMod() + 0.2f);
-            pyro.setPyroFbMod(pyro.getPyroFbMod() + 0.2f);
-            pyro.setPyroIgniteMod(pyro.getPyroIgniteMod()+ 0.2f);
+            pyro.setWizardFbMod(pyro.getPyroFbMod() + Constants.LV_ANGEL_PYRO_MOD);
+            pyro.setWizardIgniteMod(pyro.getPyroIgniteMod() + Constants.LV_ANGEL_PYRO_MOD);
+            pyro.setKnightFbMod(pyro.getPyroFbMod() + Constants.LV_ANGEL_PYRO_MOD);
+            pyro.setKnightIgniteMod(pyro.getPyroIgniteMod() + Constants.LV_ANGEL_PYRO_MOD);
+            pyro.setRogueFbMod(pyro.getRogueFbMod() + Constants.LV_ANGEL_PYRO_MOD);
+            pyro.setRogueIgniteMod(pyro.getRogueIgniteMod() + Constants.LV_ANGEL_PYRO_MOD);
+            pyro.setPyroFbMod(pyro.getPyroFbMod() + Constants.LV_ANGEL_PYRO_MOD);
+            pyro.setPyroIgniteMod(pyro.getPyroIgniteMod() + Constants.LV_ANGEL_PYRO_MOD);
 
             greatMagician.attachHelpedPlayers(pyro);
         }

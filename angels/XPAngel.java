@@ -1,6 +1,6 @@
 package angels;
 
-import GameAdmin.GreatMagician;
+import admin.GreatMagician;
 import constants.Constants;
 import main.InputLoader;
 import players.Knight;
@@ -8,7 +8,7 @@ import players.Pyromancer;
 import players.Rogue;
 import players.Wizard;
 
-public class XPAngel extends Angel implements Subject, AngelVisitor {
+public final class XPAngel extends Angel implements Subject, AngelVisitor {
 
     public XPAngel(final int abscissa, final int ordinate) {
         setMyAbscissa(abscissa);
@@ -19,42 +19,54 @@ public class XPAngel extends Angel implements Subject, AngelVisitor {
     }
 
     @Override
-    public void angelVisit(Knight knight, InputLoader inputLoader) {
+    public void angelVisit(final Knight knight, final InputLoader inputLoader) {
         if (!knight.isDead()) {
             GreatMagician greatMagician = GreatMagician.getInstance();
 
+            // Display player helped by angel message
             inputLoader.displayGoodAngel(this, knight);
 
+            // Update XP
             int lvl = knight.getLevel();
-            knight.setXp(knight.getXp() + 45);
+            knight.setXp(knight.getXp() + Constants.XP_ANGEL_KNIGHT_INCREASE);
 
-            while ((250 + lvl * 50) <= knight.getXp()) {
+            // Make sure the XP corresponds with the level
+            while ((Constants.XP_FORMULA_FIRST_FACTOR + lvl
+                    * Constants.XP_FORMULA_SECOND_FACTOR) <= knight.getXp()) {
                 ++lvl;
                 knight.setLevel(lvl);
-                knight.setHp(Constants.DEFAULT_KNIGHT_HP + knight.getLevel() * Constants.KNIGHT_INCREASE);
-                knight.setMaxHp(Constants.DEFAULT_KNIGHT_HP + knight.getLevel() * Constants.KNIGHT_INCREASE);
+                knight.setHp(Constants.DEFAULT_KNIGHT_HP
+                        + knight.getLevel() * Constants.KNIGHT_INCREASE);
+                knight.setMaxHp(Constants.DEFAULT_KNIGHT_HP
+                        + knight.getLevel() * Constants.KNIGHT_INCREASE);
                 inputLoader.displayLvlEvolution(knight);
             }
 
+            // Notify the great magician
             greatMagician.attachHelpedPlayers(knight);
         }
     }
 
     @Override
-    public void angelVisit(Wizard wizard, InputLoader inputLoader) {
+    public void angelVisit(final Wizard wizard, final InputLoader inputLoader) {
+
+        // Same as above
         if (!wizard.isDead()) {
             GreatMagician greatMagician = GreatMagician.getInstance();
 
             inputLoader.displayGoodAngel(this, wizard);
 
             int lvl = wizard.getLevel();
-            wizard.setXp(wizard.getXp() + 60);
+            wizard.setXp(wizard.getXp() + Constants.XP_ANGEL_WIZARD_INCREASE);
 
-            while ((250 + lvl * 50) <= wizard.getXp()) {
+            while ((Constants.XP_FORMULA_FIRST_FACTOR + lvl
+                    * Constants.XP_FORMULA_SECOND_FACTOR) <= wizard.getXp()) {
                 ++lvl;
                 wizard.setLevel(lvl);
-                wizard.setHp(Constants.DEFAULT_WIZARD_HP + wizard.getLevel() * Constants.WIZARD_INCREASE);
-                wizard.setMaxHp(Constants.DEFAULT_WIZARD_HP + wizard.getLevel() * Constants.WIZARD_INCREASE);
+                wizard.setHp(Constants.DEFAULT_WIZARD_HP
+                        + wizard.getLevel() * Constants.WIZARD_INCREASE);
+                wizard.setMaxHp(Constants.DEFAULT_WIZARD_HP
+                        + wizard.getLevel() * Constants.WIZARD_INCREASE);
                 inputLoader.displayLvlEvolution(wizard);
             }
 
@@ -63,20 +75,25 @@ public class XPAngel extends Angel implements Subject, AngelVisitor {
     }
 
     @Override
-    public void angelVisit(Rogue rogue, InputLoader inputLoader) {
+    public void angelVisit(final Rogue rogue, final InputLoader inputLoader) {
+
+        // Same as above
         if (!rogue.isDead()) {
             GreatMagician greatMagician = GreatMagician.getInstance();
 
             inputLoader.displayGoodAngel(this, rogue);
 
             int lvl = rogue.getLevel();
-            rogue.setXp(rogue.getXp() + 40);
+            rogue.setXp(rogue.getXp() + Constants.XP_ANGEL_ROGUE_INCREASE);
 
-            while ((250 + lvl * 50) <= rogue.getXp()) {
+            while ((Constants.XP_FORMULA_FIRST_FACTOR + lvl
+                    * Constants.XP_FORMULA_SECOND_FACTOR) <= rogue.getXp()) {
                 ++lvl;
                 rogue.setLevel(lvl);
-                rogue.setHp(Constants.DEFAULT_ROGUE_HP + rogue.getLevel() * Constants.ROGUE_INCREASE);
-                rogue.setMaxHp(Constants.DEFAULT_ROGUE_HP + rogue.getLevel() * Constants.ROGUE_INCREASE);
+                rogue.setHp(Constants.DEFAULT_ROGUE_HP
+                        + rogue.getLevel() * Constants.ROGUE_INCREASE);
+                rogue.setMaxHp(Constants.DEFAULT_ROGUE_HP
+                        + rogue.getLevel() * Constants.ROGUE_INCREASE);
                 inputLoader.displayLvlEvolution(rogue);
             }
 
@@ -85,20 +102,24 @@ public class XPAngel extends Angel implements Subject, AngelVisitor {
     }
 
     @Override
-    public void angelVisit(Pyromancer pyro, InputLoader inputLoader) {
+    public void angelVisit(final Pyromancer pyro, final InputLoader inputLoader) {
+
+        // Same as above
         if (!pyro.isDead()) {
             GreatMagician greatMagician = GreatMagician.getInstance();
 
             inputLoader.displayGoodAngel(this, pyro);
 
             int lvl = pyro.getLevel();
-            pyro.setXp(pyro.getXp() + 50);
+            pyro.setXp(pyro.getXp() + Constants.XP_ANGEL_PYRP_INCREASE);
 
-            while ((250 + lvl * 50) <= pyro.getXp()) {
+            while ((Constants.XP_FORMULA_FIRST_FACTOR + lvl
+                    * Constants.XP_FORMULA_SECOND_FACTOR) <= pyro.getXp()) {
                 ++lvl;
                 pyro.setLevel(lvl);
                 pyro.setHp(Constants.DEFAULT_PYRO_HP + pyro.getLevel() * Constants.PYRO_INCREASE);
-                pyro.setMaxHp(Constants.DEFAULT_PYRO_HP + pyro.getLevel() * Constants.PYRO_INCREASE);
+                pyro.setMaxHp(Constants.DEFAULT_PYRO_HP
+                        + pyro.getLevel() * Constants.PYRO_INCREASE);
                 inputLoader.displayLvlEvolution(pyro);
             }
 

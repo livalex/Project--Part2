@@ -1,22 +1,27 @@
 package strategies;
 
 
+import constants.Constants;
 import main.InputLoader;
 import players.Human;
-import players.Wizard;
 
-public class DefensiveWizardStrategy implements GameStrategy {
+public final class DefensiveWizardStrategy implements GameStrategy {
+
+    // Adopt the defensive wizard strategy if it's the case
     @Override
-    public void play(final Human human, InputLoader inputLoader) {
-        human.setHp(human.getHp() + (human.getHp() / 5));
+    public void play(final Human human, final InputLoader inputLoader) {
 
-        human.setRogueDrainMod(human.getRogueDrainMod() - 0.2f);
-        human.setRogueDeflectMod(human.getRogueDeflectMod() - 0.2f);
-        human.setWizardDrainMod(human.getWizardDrainMod() - 0.2f);
-        human.setWizardDeflectMod(human.getWizardDeflectMod() - 0.2f);
-        human.setPyroDrainMod(human.getPyroDrainMod() - 0.2f);
-        human.setPyroDeflectMod(human.getPyroDeflectMod() - 0.2f);
-        human.setKnightDrainMod(human.getKnightDrainMod() - 0.2f);
-        human.setKnightDeflectMod(human.getKnightDeflectMod()- 0.2f);
+        // Update hp
+        human.setHp(human.getHp() + (human.getHp() / Constants.DEF_WIZARD_DIV));
+
+        // Update the player's race modifiers
+        human.setRogueDrainMod(human.getRogueDrainMod() - Constants.DEF_WIZARD_MOD);
+        human.setRogueDeflectMod(human.getRogueDeflectMod() - Constants.DEF_WIZARD_MOD);
+        human.setWizardDrainMod(human.getWizardDrainMod() - Constants.DEF_WIZARD_MOD);
+        human.setWizardDeflectMod(human.getWizardDeflectMod() - Constants.DEF_WIZARD_MOD);
+        human.setPyroDrainMod(human.getPyroDrainMod() - Constants.DEF_WIZARD_MOD);
+        human.setPyroDeflectMod(human.getPyroDeflectMod() - Constants.DEF_WIZARD_MOD);
+        human.setKnightDrainMod(human.getKnightDrainMod() - Constants.DEF_WIZARD_MOD);
+        human.setKnightDeflectMod(human.getKnightDeflectMod() - Constants.DEF_WIZARD_MOD);
     }
 }

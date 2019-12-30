@@ -23,6 +23,7 @@ public final class VectorCreator {
                                          final PlayersFactory playersFactory, final Input input) {
         ArrayList<Human> players = new ArrayList<>();
 
+        // Create a player with the specified input data
         for (int i = 0; i < n; ++i) {
             String strategy = input.getPlayerTypes().get(i);
             int ab = input.getFirstCoordonates().get(i);
