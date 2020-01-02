@@ -25,7 +25,7 @@ public final class GreatMagician implements Observer {
         return greatMagician;
     }
 
-    // Methods to notify the Magician about he events
+    // Methods to notify the Magician about the events
 
     // Attach the abscissa of the new angel
     @Override

@@ -29,8 +29,8 @@ public final class GoodBoy extends Angel implements Subject, AngelVisitor {
             // Update hp
             knight.setHp(knight.getHp() + Constants.GB_ANGEL_KNIGHT_INCREASE);
 
-            // Make sure the life of the player isn't bigger the player's
-            // maxHp
+            // Make sure the life of the player isn't bigger than the
+            // player's maxHp
             if (knight.getHp() > knight.getMaxHp()) {
                 knight.setHp(knight.getMaxHp());
             }

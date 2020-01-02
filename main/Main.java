@@ -23,7 +23,7 @@ public final class Main {
         // Build the 'map'.
         ArrayList<String> ground = mapBuilder.getBattleGround();
 
-        // Create the players vector
+        // Create the players array
         ArrayList<Human> players = vectorCreator.createVector(input.getP(), playersFactory, input);
 
         // Play game.

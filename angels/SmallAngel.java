@@ -30,7 +30,7 @@ public final class SmallAngel extends Angel implements Subject, AngelVisitor {
             knight.setHp(knight.getHp() + Constants.SMALL_ANGEL_KNIGHT_INCREASE);
 
             // Make sure the player's hp is not bigger
-            // Than it's maxHp
+            // Than his maxHp
             if (knight.getHp() > knight.getMaxHp()) {
                 knight.setHp(knight.getMaxHp());
             }

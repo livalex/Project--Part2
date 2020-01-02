@@ -29,7 +29,7 @@ public final class LifeGiver extends Angel implements Subject, AngelVisitor {
             knight.setHp(knight.getHp() + Constants.LG_ANGEL_KNIGHT_INCREASE);
 
             // Make sure the health of the player isn't bigger
-            // Than it's maxHp
+            // Than his maxHp
             if (knight.getHp() > knight.getMaxHp()) {
                 knight.setHp(knight.getMaxHp());
             }

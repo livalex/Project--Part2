@@ -30,7 +30,7 @@ public final class Spawner extends Angel implements Subject, AngelVisitor {
             knight.setHp(Constants.SPAWNER_KNIGHT_LIFE_SET);
 
             // If the player is not killed by Doomer,
-            // Set it's XP to the player's XP at the
+            // Set his XP to the player's XP at the
             // Beginning of the round
             if (!knight.isKilledByDoomer()) {
                 knight.setXp(knight.getPlayerStartRoundXp());

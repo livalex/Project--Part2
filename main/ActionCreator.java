@@ -62,7 +62,7 @@ public final class ActionCreator {
                         - player1.getLevel()) * Constants.XP_FORMULA_MULTIPLICATION));
 
         // Continue update his health and level, if the XP is bigger than
-        // it's level
+        // his level
         while (player2.getXp() >= Constants.LVL_UP_FACTOR
                 + player2.getLevel() * Constants.LVL_UP_MULTIPLICATION) {
             // Calculate the level of the player.
@@ -139,14 +139,14 @@ public final class ActionCreator {
 
                 player2.setPlayerStartRoundXp(player2.getXp());
 
-                // Check if their are in the same position.
+                // Check if they are in the same position.
                 if (player1.getCurrentAbscissa() == player2.getCurrentAbscissa()
                         && player1.getCurrentOrdinate() == player2.getCurrentOrdinate()) {
 
                     // Check for them not to be dead.
                     if (!player1.isDead() && !player2.isDead()) {
 
-                        // Make sure that wizard strikes second.
+                        // Make sure that the wizard strikes second.
                         if (player1.getPlayerType() != 2 && player2.getPlayerType() == 2) {
 
                             // Fight
@@ -163,13 +163,13 @@ public final class ActionCreator {
                                 inputLoader.declareDeath(player2, player1);
                             }
 
-                            // The XP is given if the both players
+                            // The XP is given if both players
                             //  ARE NOT dead
                             if (player2.isDead() && !player1.isDead()) {
                                 xpGiver(player1, player2, inputLoader);
                             }
 
-                            // The XP is given if the both players
+                            // The XP is given if both players
                             //  ARE NOT dead
                             if (player1.isDead() && !player2.isDead()) {
                                 xpGiver(player2, player1, inputLoader);
@@ -190,13 +190,13 @@ public final class ActionCreator {
                                 inputLoader.declareDeath(player2, player1);
                             }
 
-                            // The XP is given if the both players
+                            // The XP is given if both players
                             //  ARE NOT dead
                             if (player2.isDead() && !player1.isDead()) {
                                 xpGiver(player1, player2, inputLoader);
                             }
 
-                            // The XP is given if the both players
+                            // The XP is given if both players
                             //  ARE NOT dead
                             if (player1.isDead() && !player2.isDead()) {
                                 xpGiver(player2, player1, inputLoader);
@@ -227,7 +227,7 @@ public final class ActionCreator {
                 player.setCurrentOrdinate(players.get(j).getCurrentOrdinate() + 1);
 
                 // Make sure the ground is set ONLY if the player stays on the map
-                // Same for the rest of cases
+                // Same for the rest of the cases
                 if (player.getCurrentAbscissa() >= 0 && player.getCurrentOrdinate() >= 0) {
                     groundSetter(ground, player);
                 }
@@ -275,7 +275,7 @@ public final class ActionCreator {
         ArrayList<Angel> angels = new ArrayList<>();
         AngelsFactory angelsFactory = AngelsFactory.getInstance();
 
-        // Get all the strings with the type of angel and it's coordinates
+        // Get all the strings with the type of angel and coordinates
         for (int j = 0; j < input.getNumberAngelsRound().get(i); ++j) {
             String str = input.getAngelTypes().get(getVectorIterator());
 
@@ -367,10 +367,13 @@ public final class ActionCreator {
             }
         }
 
+        // Reset the killed by Doomer flag in case the player
+        // Is killed by Doomer then brought back to life
         for (int a = 0; a < players.size(); ++a) {
             Human player = players.get(a);
-            player.setKilledByDoomer(false);
-            player.setKilledByDoomer(false);
+            if (!player.isDead()) {
+                player.setKilledByDoomer(false);
+            }
         }
     }
 
@@ -379,6 +382,7 @@ public final class ActionCreator {
                                         final ArrayList<String> ground,
                                         final InputLoader inputLoader) {
 
+        // To trick the "final argument" checkstyle error
         ArrayList<Human> playersCopy = new ArrayList<>();
         for (int j = 0; j < players.size(); ++j) {
             Human h = players.get(j);
@@ -391,7 +395,7 @@ public final class ActionCreator {
             // Display round
             inputLoader.displayRound(i + 1);
 
-            // Move the players to the specified location int this round
+            // Move the players to the specified location in this round
             playersCopy = checkForMovement(m, players, ground, i, input);
 
             // If a player is paralysed or immobilised he
@@ -408,7 +412,7 @@ public final class ActionCreator {
                 player.checkOverTimeAbility();
             }
 
-            // Create a vector with the angels of this round
+            // Create an array with the angels of this round
             ArrayList<Angel> angels = angelsVectorCreator(input, i, inputLoader);
 
             // Choose player strategy

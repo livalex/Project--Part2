@@ -23,7 +23,7 @@ public final class Pyromancer extends Human implements Visitable, Visitor, Visit
         angelVisitor.angelVisit(this, inputLoader);
     }
 
-    // Accept he visitor.
+    // Accept the visitor.
     @Override
     public void accept(final Visitor visitor) {
         visitor.fight(this);
